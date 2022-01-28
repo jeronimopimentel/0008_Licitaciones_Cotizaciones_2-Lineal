@@ -259,7 +259,7 @@
           </sap:WorkflowViewStateService.ViewState>
           <Transition.Condition>[(systemException isNot Nothing) OrElse (businessException isNot Nothing)]</Transition.Condition>
           <Transition.To>
-            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="Tries to close all applications in the expected way. If it fails, kills all applications. &#xA;&#xA;In the case of a system exception in the &quot;Initialization&quot; or &quot;Process Transaction&quot; states, if the respective number of retries is below its limit, the transaction will be retried." DisplayName="Close Applications" sap:VirtualizedContainerService.HintSize="380,709" sap2010:WorkflowViewState.IdRef="State_5">
+            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="Tries to close all applications in the expected way. If it fails, kills all applications. &#xA;&#xA;In the case of a system exception in the &quot;Initialization&quot; or &quot;Process Transaction&quot; states, if the respective number of retries is below its limit, the transaction will be retried." DisplayName="Close Applications" sap:VirtualizedContainerService.HintSize="330,178" sap2010:WorkflowViewState.IdRef="State_5">
               <State.Entry>
                 <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="436.8,344.8" sap2010:WorkflowViewState.IdRef="TryCatch_16">
                   <sap:WorkflowViewStateService.ViewState>
@@ -326,7 +326,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.Condition>[(systemException isNot Nothing) AndAlso (attemptNumber &lt;= Cint(config("MaxRetryNumber"))) AndAlso (initException is Nothing)]</Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Kill applications to assure they are in initial state, read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,133" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Kill applications to assure they are in initial state, read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="688,3144" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
                         <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="642,2726" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
@@ -417,9 +417,12 @@
                                     <ui:LogMessage DisplayName="Log Message screen resolution" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[&quot;The primary screen resolution is: &quot;+Screen.PrimaryScreen.Bounds.Width.ToString+&quot; x &quot;+ Screen.PrimaryScreen.Bounds.Height.ToString]" />
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Initialize config dictionary and all others necessary configs" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Config.xlsx</InArgument>
-                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings", "Constants"}]</InArgument>
-                                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
+                                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictionary">
+                                          <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="config" />
+                                        </OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_credentialKeyName" />
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_assetsKeyName" />
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_stringJson" />
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get the project name setted in project json file" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_40" UnSafe="False" WorkflowFileName="Framework\GetProjectName.xaml">
