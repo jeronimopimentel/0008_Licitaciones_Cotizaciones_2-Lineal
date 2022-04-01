@@ -1,0 +1,29 @@
+{
+    "development":{
+        "assets":{
+            "citrixUrlDev":"citrixUrl"
+        },
+        "credentials":{
+            "testeCredentialDev":"testeCredentialDev"
+        },
+        "assetDev":"testeDev"
+    },
+    "homologacao":{
+        "assets":{
+            "citrixUrlHml":"citrixUrl"
+        },
+        "credentials":{
+            "testeCredentialHml":"testeCredentialHml"
+        },
+        "assetHml":"testeHml"
+    },
+    "producao":{
+        "assets":{
+            "citrixUrlPrd":"citrixUrl"
+        },
+        "credentials":{
+            "testeCredentialPrd":"testeCredentialPrd"
+        },
+        "assetPrd":"testePrd"
+    }
+}
