@@ -1,0 +1,15 @@
+{
+    "credentials": {
+        "nameToBeUsedInUiPathWorkFlow": "credentialAssetNameInOrc",
+        "outlook": "outlookCredentials",
+        "sap": "sapCredentials"
+
+    },
+    "assets": {
+        "assetNameToBeUsedInUiPathWorkflow": "assetNameInOrc",
+        "smtp": "smtpConfigs",
+        "teste": "assetTest"
+    },
+    "normalVariable": "foo",
+    "otherVariable": "bar"
+}
