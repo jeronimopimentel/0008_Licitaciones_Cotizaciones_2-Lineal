@@ -1,60 +1,53 @@
 {
     "development":{
-	"assetDev":"testeDev",
-	"orchestratorQueueName":"OrchestratorQueueNameDev",
-	"orchestratorQueueFolder":"OrchestratorQueueFolderDev",
-	"initMaxRetry": 2,
-	"useStorageBucketFiles": true,
-	"localBucketDir": "01. Data\\Temp\\",
-        "RetryNumberOrchestratorInteractions": 3,
-	"ManualExecutionTime": 30,
-
-	"assets":{
-            "citrixUrlDev":"citrixUrl"
-        },
-        
-	"credentials":{
-            "testeCredentialDev":"testeCredentialDev"
-        },
-
-
+        "assetDev": "testeDev",
+        "orchestratorQueueName": "OrchestratorQueueNameDev",
+        "orchestratorQueueFolder": "OrchestratorQueueFolderDev",
+        "initMaxRetry": 2,
+        "useStorageBucketFiles": true,
+        "localBucketDir": "01. Data\\Temp\\",
+        "retryNumberOrchestratorInteractions": 3,
+        "manualExecutionTime": 30,
+        "shouldStream": true,
+        "assets":{
+                "citrixUrlDev": "citrixUrl"
+            }, 
+        "credentials":{
+                "testeCredentialDev": "testeCredentialDev"
+            }
     },
     "homologacao":{
-      "assetHml":"testeHml",
-	"orchestratorQueueName":"OrchestratorQueueNameHml",
-	"orchestratorQueueFolder":"OrchestratorQueueFolderHml",
-	"initMaxRetry": 2,
-	"useStorageBucketFiles": true,
-	"localBucketDir": "01. Data\\Temp\\",
-        "RetryNumberOrchestratorInteractions": 2,
-	"ManualExecutionTime": 30,
-
+        "assetHml": "testeHml",
+        "orchestratorQueueName": "OrchestratorQueueNameHml",
+        "orchestratorQueueFolder": "OrchestratorQueueFolderHml",
+        "initMaxRetry": 2,
+        "useStorageBucketFiles": true,
+        "localBucketDir": "01. Data\\Temp\\",
+        "retryNumberOrchestratorInteractions": 2,
+        "manualExecutionTime": 30,
+        "shouldStream": true,
         "assets":{
-            "citrixUrlHml":"citrixUrl"
+            "citrixUrlHml": "citrixUrl"
         },
         "credentials":{
-            "testeCredentialHml":"testeCredentialHml"
+            "testeCredentialHml": "testeCredentialHml"
         }
-  
-
     },
     "producao":{
-        "assetPrd":"testePrd",
-	"orchestratorQueueName":"OrchestratorQueueNamePrd",
-	"orchestratorQueueFolder":"OrchestratorQueueFolderPrd",
-	"initMaxRetry": 2,
-	"useStorageBucketFiles": true,
-	"localBucketDir": "01. Data\\Temp\\",
-        "RetryNumberOrchestratorInteractions": 2,
-	"ManualExecutionTime": 30,
-
+        "assetPrd": "testePrd",
+        "orchestratorQueueName": "OrchestratorQueueNamePrd",
+        "orchestratorQueueFolder": "OrchestratorQueueFolderPrd",
+        "initMaxRetry": 2,
+        "useStorageBucketFiles": true,
+        "localBucketDir": "01. Data\\Temp\\",
+        "retryNumberOrchestratorInteractions": 2,
+        "manualExecutionTime": 30,
+        "shouldStream": true,
         "assets":{
-            "citrixUrlPrd":"citrixUrl"
+            "citrixUrlPrd": "citrixUrl"
         },
         "credentials":{
-            "testeCredentialPrd":"testeCredentialPrd"
+            "testeCredentialPrd": "testeCredentialPrd"
         }
-
-
     }
 }

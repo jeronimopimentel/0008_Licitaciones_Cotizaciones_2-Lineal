@@ -1,23 +1,16 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="InitAllSettings" this:InitAllSettings.in_shouldUseConfigFromStorageBucket="False" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Allows the Orchestrator folder name where the queue is created to be passed as an argument, instead of only being defined in the configuration file." Name="in_orchestratorQueueFolder" Type="InArgument(x:String)" />
-    <x:Property Name="in_shouldStream" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_initMaxRetry" Type="InArgument(x:Int32)" />
     <x:Property sap2010:Annotation.AnnotationText="Allows the Orchestrator queue name to be passed as an argument, instead of only being defined in the configuration file." Name="in_orchestratorQueueName" Type="InArgument(x:String)" />
     <x:Property Name="in_shouldUseConfigFromStorageBucket" Type="InArgument(x:Boolean)" />
-    <x:Property Name="out_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_config" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_environment" Type="InArgument(x:String)" />
   </x:Members>
-  <this:InitAllSettings.in_shouldStream>
-    <InArgument x:TypeArguments="x:Boolean" />
-  </this:InitAllSettings.in_shouldStream>
-  <this:InitAllSettings.out_config>
-    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
-  </this:InitAllSettings.out_config>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>840,1962</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2128,1940</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>InitAllSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -76,10 +69,9 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="InitAllSettings" sap:VirtualizedContainerService.HintSize="850,1897" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="InitAllSettings" sap:VirtualizedContainerService.HintSize="850,1875" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="projectName" />
       <Variable x:TypeArguments="x:String" Name="textJsonConfig" />
@@ -89,44 +81,30 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get the project name setted in project json file" sap:VirtualizedContainerService.HintSize="808,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="02. Framework\GetProjectName.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get the project name setted in project json file" sap:VirtualizedContainerService.HintSize="808,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="02. Framework\GetProjectName.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_projectName">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="projectName" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_projectName">[projectName]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[in_shouldUseConfigFromStorageBucket]" DisplayName="Should use config from storage bucket?" sap:VirtualizedContainerService.HintSize="808,273" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[in_shouldUseConfigFromStorageBucket]" DisplayName="Should use config from storage bucket?" sap:VirtualizedContainerService.HintSize="808,270" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ReadConfigFromStorageBucket workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="02. Framework\ReadConfigFromStorageBucket.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ReadConfigFromStorageBucket workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="02. Framework\ReadConfigFromStorageBucket.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_storageBucketName">
-              <Literal x:TypeArguments="x:String">Configs</Literal>
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_fullFilePath">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;config_&quot; + projectName +  &quot;.json&quot;" />
-            </InArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_textJsonConfig">
-              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="textJsonConfig" />
-            </OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_storageBucketName">Configs</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_fullFilePath" xml:space="preserve">["config_" + projectName +  ".json"]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_textJsonConfig">[textJsonConfig]</OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </If.Then>
       <If.Else>
-        <ui:ReadTextFile Content="[textJsonConfig]" DisplayName="Read Config FIle" Encoding="iso-8859-15" FileName="01. Data\config.json" sap:VirtualizedContainerService.HintSize="384,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+        <ui:ReadTextFile Content="[textJsonConfig]" DisplayName="Read Config FIle" Encoding="iso-8859-15" FileName="01. Data\config.json" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
       </If.Else>
     </If>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke JsonToDictionary workflow" sap:VirtualizedContainerService.HintSize="808,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="02. Framework\JsonToDictionary.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke JsonToDictionary workflow" sap:VirtualizedContainerService.HintSize="808,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="02. Framework\JsonToDictionary.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictionary">
-          <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="out_config" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_stringJson">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="textJsonConfig" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_environment">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_environment" />
-        </InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictionary">[out_config]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_stringJson">[textJsonConfig]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_environment">[in_environment]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <Assign DisplayName="Insert project name into config dict" sap:VirtualizedContainerService.HintSize="808,60" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -137,14 +115,14 @@
         <InArgument x:TypeArguments="x:Object">[projectName]</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence DisplayName="Replace Config values with arguments" sap:VirtualizedContainerService.HintSize="808,1086" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Replace Config values with arguments" sap:VirtualizedContainerService.HintSize="808,1069" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If sap2010:Annotation.AnnotationText="Overwrite queue name from in configuration file in case the argument in_OrchestratorQueueName is specified.&#xA;This provides backward compatibility with &lt; 2018.3." Condition="[Not String.IsNullOrWhiteSpace(in_OrchestratorQueueName)]" DisplayName="If in_OrchestratorQueueName is specified" sap:VirtualizedContainerService.HintSize="484,310" sap2010:WorkflowViewState.IdRef="If_2">
+      <If sap2010:Annotation.AnnotationText="Overwrite queue name from in configuration file in case the argument in_OrchestratorQueueName is specified.&#xA;This provides backward compatibility with &lt; 2018.3." Condition="[Not String.IsNullOrWhiteSpace(in_OrchestratorQueueName)]" DisplayName="If in_OrchestratorQueueName is specified" sap:VirtualizedContainerService.HintSize="484,304" sap2010:WorkflowViewState.IdRef="If_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -163,7 +141,7 @@
           </Assign>
         </If.Then>
       </If>
-      <If sap2010:Annotation.AnnotationText="Overwrite folder name from in configuration file in case the argument in_OrchestratorQueueFolder is specified.&#xA;This provides backward compatibility with &lt; 2018.3." Condition="[Not String.IsNullOrWhiteSpace(in_OrchestratorQueueFolder)]" DisplayName="If in_OrchestratorQueueFolder is specified" sap:VirtualizedContainerService.HintSize="484,310" sap2010:WorkflowViewState.IdRef="If_3">
+      <If sap2010:Annotation.AnnotationText="Overwrite folder name from in configuration file in case the argument in_OrchestratorQueueFolder is specified.&#xA;This provides backward compatibility with &lt; 2018.3." Condition="[Not String.IsNullOrWhiteSpace(in_OrchestratorQueueFolder)]" DisplayName="If in_OrchestratorQueueFolder is specified" sap:VirtualizedContainerService.HintSize="484,304" sap2010:WorkflowViewState.IdRef="If_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -182,7 +160,7 @@
           </Assign>
         </If.Then>
       </If>
-      <If sap2010:Annotation.AnnotationText="Overwrite init max retry from in configuration file in case the argument in_initMaxRetry is specified.." Condition="[Not String.IsNullOrWhiteSpace(in_initMaxRetry.ToString)]" DisplayName="If in_initMaxRetry is specified" sap:VirtualizedContainerService.HintSize="484,294" sap2010:WorkflowViewState.IdRef="If_4">
+      <If sap2010:Annotation.AnnotationText="Overwrite init max retry from in configuration file in case the argument in_initMaxRetry is specified.." Condition="[Not String.IsNullOrWhiteSpace(in_initMaxRetry.ToString)]" DisplayName="If in_initMaxRetry is specified" sap:VirtualizedContainerService.HintSize="484,289" sap2010:WorkflowViewState.IdRef="If_4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
