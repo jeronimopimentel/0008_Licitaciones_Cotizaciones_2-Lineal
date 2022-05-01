@@ -3,15 +3,21 @@
         "assetDev": "testeDev",
         "orchestratorQueueName": "OrchestratorQueueNameDev",
         "orchestratorQueueFolder": "OrchestratorQueueFolderDev",
-        "initMaxRetry": 2,
+        "maxRetryNumberInitApplications": 2,
         "useStorageBucketFiles": true,
         "localBucketDir": "01. Data\\Temp\\",
+	"exScreenshotsFolderPath": "Exceptions_Screenshots",
         "retryNumberOrchestratorInteractions": 3,
         "manualExecutionTime": 30,
         "shouldStream": true,
+	"logMessage_Success": "Transaction Successful.",
+	"logMessage_ApplicationException": "System exception.",
+	"logMessage_BusinessRuleException" "Business rule exception.",
+
         "assets":{
                 "citrixUrlDev": "citrixUrl"
             }, 
+
         "credentials":{
                 "testeCredentialDev": "testeCredentialDev"
             }
@@ -23,12 +29,18 @@
         "initMaxRetry": 2,
         "useStorageBucketFiles": true,
         "localBucketDir": "01. Data\\Temp\\",
-        "retryNumberOrchestratorInteractions": 2,
+	"exScreenshotsFolderPath": "Exceptions_Screenshots",
+        "retryNumberOrchestratorInteractions": 3,
         "manualExecutionTime": 30,
         "shouldStream": true,
+	"logMessage_Success": "Transaction Successful.",
+	"logMessage_ApplicationException": "System exception.",
+	"logMessage_BusinessRuleException" "Business rule exception.",
+
         "assets":{
             "citrixUrlHml": "citrixUrl"
         },
+
         "credentials":{
             "testeCredentialHml": "testeCredentialHml"
         }
@@ -40,12 +52,18 @@
         "initMaxRetry": 2,
         "useStorageBucketFiles": true,
         "localBucketDir": "01. Data\\Temp\\",
-        "retryNumberOrchestratorInteractions": 2,
+	"exScreenshotsFolderPath": "Exceptions_Screenshots",
+        "retryNumberOrchestratorInteractions": 3,
         "manualExecutionTime": 30,
         "shouldStream": true,
+	"logMessage_Success": "Transaction Successful.",
+	"logMessage_ApplicationException": "System exception.",
+	"logMessage_BusinessRuleException" "Business rule exception.",
+
         "assets":{
             "citrixUrlPrd": "citrixUrl"
         },
+
         "credentials":{
             "testeCredentialPrd": "testeCredentialPrd"
         }
