@@ -10,9 +10,6 @@
         "retryNumberOrchestratorInteractions": 3,
         "manualExecutionTime": 30,
         "shouldStream": true,
-	"logMessage_Success": "Transaction Successful.",
-	"logMessage_ApplicationException": "System exception.",
-	"logMessage_BusinessRuleException" "Business rule exception.",
 
         "assets":{
                 "citrixUrlDev": "citrixUrl"
@@ -33,9 +30,6 @@
         "retryNumberOrchestratorInteractions": 3,
         "manualExecutionTime": 30,
         "shouldStream": true,
-	"logMessage_Success": "Transaction Successful.",
-	"logMessage_ApplicationException": "System exception.",
-	"logMessage_BusinessRuleException" "Business rule exception.",
 
         "assets":{
             "citrixUrlHml": "citrixUrl"
@@ -56,9 +50,6 @@
         "retryNumberOrchestratorInteractions": 3,
         "manualExecutionTime": 30,
         "shouldStream": true,
-	"logMessage_Success": "Transaction Successful.",
-	"logMessage_ApplicationException": "System exception.",
-	"logMessage_BusinessRuleException" "Business rule exception.",
 
         "assets":{
             "citrixUrlPrd": "citrixUrl"
