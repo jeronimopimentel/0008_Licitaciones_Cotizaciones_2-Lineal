@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>769,1396</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>676,1396</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -96,7 +96,9 @@
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeAppA workflow" sap:VirtualizedContainerService.HintSize="372,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="03. Applications\ApplicationA\InitializeAppA.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <InArgument x:TypeArguments="x:String" x:Key="in_applicationName" />
-                  <InArgument x:TypeArguments="x:String" x:Key="in_initializationLogQueueName" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_initializationLogQueueName">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;initializationLogQueueName&quot;).ToString" />
+                  </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_projectName">
                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;projectName&quot;).ToString" />
                   </InArgument>
@@ -104,10 +106,14 @@
                   <InArgument x:TypeArguments="ss:SecureString" x:Key="in_password" />
                   <InArgument x:TypeArguments="x:String" x:Key="in_applicationUrl" />
                   <InArgument x:TypeArguments="x:String" x:Key="in_initializationLogQueueFolder">
-                    <Literal x:TypeArguments="x:String" Value="" />
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;initializationLogQueueFolder&quot;).ToString" />
                   </InArgument>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_retryNumberSetTransactionStatus" />
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_retryNumberAddTransactionItem" />
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeoutMs">
+                    <Literal x:TypeArguments="x:Int32" Value="30000" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_maxRetryNumberOrchestratorIteractions">
+                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_config(&quot;maxRetryNumberOrchestratorIteractions&quot;))" />
+                  </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
             </TryCatch.Try>
@@ -207,7 +213,9 @@
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeAppB workflow" sap:VirtualizedContainerService.HintSize="370,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="03. Applications\ApplicationB\InitializeAppB.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <InArgument x:TypeArguments="x:String" x:Key="in_applicationName" />
-                  <InArgument x:TypeArguments="x:String" x:Key="in_initializationLogQueueName" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_initializationLogQueueName">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;initializationLogQueueName&quot;).ToString" />
+                  </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_projectName">
                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;projectName&quot;).ToString" />
                   </InArgument>
@@ -215,10 +223,14 @@
                   <InArgument x:TypeArguments="ss:SecureString" x:Key="in_password" />
                   <InArgument x:TypeArguments="x:String" x:Key="in_applicationUrl" />
                   <InArgument x:TypeArguments="x:String" x:Key="in_initializationLogQueueFolder">
-                    <Literal x:TypeArguments="x:String" Value="" />
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;initializationLogQueueFolder&quot;).ToString" />
                   </InArgument>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_retryNumberSetTransactionStatus" />
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_retryNumberAddTransactionItem" />
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeoutMs">
+                    <Literal x:TypeArguments="x:Int32" Value="30000" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_maxRetryNumberOrchestratorIteractions">
+                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_config(&quot;maxRetryNumberOrchestratorIteractions&quot;))" />
+                  </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
             </TryCatch.Try>

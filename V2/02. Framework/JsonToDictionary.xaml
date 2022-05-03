@@ -11,11 +11,12 @@
       </x:Property.Attributes>
     </x:Property>
     <x:Property Name="in_environment" Type="InArgument(x:String)" />
+    <x:Property Name="in_maxRetryNumberOrchestratorIteractions" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>702,1923</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>702,1976</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -54,7 +55,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="58">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -84,9 +85,10 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Convert Json to Dictionary " sap:VirtualizedContainerService.HintSize="712,1858" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence DisplayName="Convert Json to Dictionary " sap:VirtualizedContainerService.HintSize="712,1911" sap2010:WorkflowViewState.IdRef="Sequence_5">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JToken" Name="jsonToken" />
     </Sequence.Variables>
@@ -112,11 +114,11 @@
         <InArgument x:TypeArguments="njl:JToken">[Newtonsoft.Json.JsonConvert.DeserializeObject(Of Newtonsoft.Json.Linq.JToken)(in_stringJson)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[Not String.IsNullOrEmpty(in_environment)]" sap:VirtualizedContainerService.HintSize="670,766" sap2010:WorkflowViewState.IdRef="If_12">
+    <If Condition="[Not String.IsNullOrEmpty(in_environment)]" DisplayName="If environment is informed" sap:VirtualizedContainerService.HintSize="670,818" sap2010:WorkflowViewState.IdRef="If_12">
       <If.Then>
-        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,579" sap2010:WorkflowViewState.IdRef="TryCatch_13">
+        <TryCatch DisplayName="Try Catch - Get environment JToken" sap:VirtualizedContainerService.HintSize="438,628" sap2010:WorkflowViewState.IdRef="TryCatch_13">
           <TryCatch.Try>
-            <Sequence sap:VirtualizedContainerService.HintSize="304,352" sap2010:WorkflowViewState.IdRef="Sequence_36">
+            <Sequence DisplayName="Get environment JToken" sap:VirtualizedContainerService.HintSize="304,396" sap2010:WorkflowViewState.IdRef="Sequence_36">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="strJson" />
               </Sequence.Variables>
@@ -133,13 +135,18 @@
                   <InArgument x:TypeArguments="njl:JToken">[Newtonsoft.Json.JsonConvert.DeserializeObject(Of Newtonsoft.Json.Linq.JToken)(in_stringJson).Item(in_environment)]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign DisplayName="Serialize json" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_62">
+              <Assign sap2010:Annotation.AnnotationText="Serialize JToken as String to get rid of parent elements in Path Property." DisplayName="Serialize json" sap:VirtualizedContainerService.HintSize="262,104" sap2010:WorkflowViewState.IdRef="Assign_62">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[strJson]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
                   <InArgument x:TypeArguments="x:String">[Newtonsoft.Json.JsonConvert.SerializeObject(jsonToken)]</InArgument>
                 </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </Assign>
               <Assign DisplayName="Deserialize json " sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_63">
                 <Assign.To>
@@ -152,7 +159,7 @@
             </Sequence>
           </TryCatch.Try>
           <TryCatch.Catches>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_13">
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_13">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -163,7 +170,7 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                 </ActivityAction.Argument>
-                <Throw Exception="[new Exception(&quot;Environment not found in config.json&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_18" />
+                <Throw DisplayName="Throw SE: Environment not found " Exception="[new Exception(&quot;Environment not found in config.json&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_18" />
               </ActivityAction>
             </Catch>
           </TryCatch.Catches>
@@ -179,13 +186,13 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For each object in json" sap:VirtualizedContainerService.HintSize="670,760" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[jsonToken]">
+    <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For each object in json" sap:VirtualizedContainerService.HintSize="670,761" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[jsonToken]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="njl:JToken">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="njl:JToken" Name="eachObject" />
           </ActivityAction.Argument>
-          <Flowchart sap:VirtualizedContainerService.HintSize="634,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+          <Flowchart DisplayName="Flowchart - add JProperties to output dictionary " sap:VirtualizedContainerService.HintSize="634,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
             <Flowchart.Variables>
               <Variable x:TypeArguments="njl:JTokenType" Name="objectType" />
             </Flowchart.Variables>
@@ -201,7 +208,7 @@
             <Flowchart.StartNode>
               <x:Reference>__ReferenceID3</x:Reference>
             </Flowchart.StartNode>
-            <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID3" DisplayName="Flow Switch" Expression="[eachObject.path]" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
+            <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID3" DisplayName="JToken Path" Expression="[eachObject.path]" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
               <FlowSwitch.Default>
                 <FlowStep x:Name="__ReferenceID1">
                   <sap:WorkflowViewStateService.ViewState>
@@ -210,15 +217,15 @@
                       <av:Size x:Key="ShapeSize">200,68</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Add Item to Dictionary" sap:VirtualizedContainerService.HintSize="200,68" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                  <Sequence DisplayName="Add Item to Dictionary" sap:VirtualizedContainerService.HintSize="826,804" sap2010:WorkflowViewState.IdRef="Sequence_22">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[Not out_dictionary.Keys.Contains(eachObject.Path)]" DisplayName="If - Verify if the dictionary doesn't contains this key" sap:VirtualizedContainerService.HintSize="826,598" sap2010:WorkflowViewState.IdRef="If_7">
+                    <If Condition="[Not out_dictionary.Keys.Contains(eachObject.Path)]" DisplayName="If - Verify if the dictionary doesn't contains this key" sap:VirtualizedContainerService.HintSize="784,712" sap2010:WorkflowViewState.IdRef="If_7">
                       <If.Then>
-                        <Sequence DisplayName="Add Item to Dictionary" sap:VirtualizedContainerService.HintSize="539,440" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                        <Sequence DisplayName="Add Item to Dictionary" sap:VirtualizedContainerService.HintSize="539,552" sap2010:WorkflowViewState.IdRef="Sequence_24">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -232,9 +239,9 @@
                               <InArgument x:TypeArguments="njl:JTokenType">[eachObject.Type]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <Switch x:TypeArguments="njl:JTokenType" DisplayName="Switch - Assing config value based on objet type" Expression="[jsonToken(eachObject.Path).Type]" sap:VirtualizedContainerService.HintSize="497,248" sap2010:WorkflowViewState.IdRef="Switch`1_6">
+                          <Switch x:TypeArguments="njl:JTokenType" DisplayName="Switch - Assing config value based on objet type" Expression="[jsonToken(eachObject.Path).Type]" sap:VirtualizedContainerService.HintSize="497,360" sap2010:WorkflowViewState.IdRef="Switch`1_6">
                             <Switch.Default>
-                              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_54">
+                              <Assign DisplayName="Assign object without converting" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_54">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:Object">[out_dictionary(eachObject.Path)]</OutArgument>
                                 </Assign.To>
@@ -249,9 +256,9 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Switch x:TypeArguments="njl:JTokenType" x:Key="Array" DisplayName="Switch - If object is array" Expression="[eachObject.First(0).Type]" sap:VirtualizedContainerService.HintSize="497,221" sap2010:WorkflowViewState.IdRef="Switch`1_5">
+                            <Switch x:TypeArguments="njl:JTokenType" x:Key="Array" DisplayName="Switch - If object is array" Expression="[eachObject.First(0).Type]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Switch`1_5">
                               <Switch.Default>
-                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_48">
+                                <Assign DisplayName="Assign object without converting" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_48">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:Object">[out_dictionary(eachObject.Path)]</OutArgument>
                                   </Assign.To>
@@ -351,14 +358,7 @@
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <Sequence DisplayName="Throw Error: Duplicates Keys" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <Throw Exception="[new Exception(&quot;Key already exist on dictionary. Key: &quot; + eachObject.Path )]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_11" />
-                        </Sequence>
+                        <Throw DisplayName="Throw BRE: Duplicate Key" Exception="[new BusinessRuleException(&quot;Key already exist on dictionary. Key: &quot; + eachObject.Path )]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_21" />
                       </If.Else>
                     </If>
                   </Sequence>
@@ -386,7 +386,7 @@
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="njl:JProperty" Name="item" />
                       </ActivityAction.Argument>
-                      <If Condition="[Not out_dictionary.Keys.Contains(item.Name) AndAlso Not out_dictionary.Keys.Contains(&quot;credentials_&quot; + item.Name + &quot;_credentialname&quot;)]" DisplayName="If - Verify if the dictionary doesn't contains this key" sap:VirtualizedContainerService.HintSize="725,1040" sap2010:WorkflowViewState.IdRef="If_11">
+                      <If Condition="[Not out_dictionary.Keys.Contains(item.Name) AndAlso Not out_dictionary.Keys.Contains(&quot;credentials_&quot; + item.Name + &quot;_credentialname&quot;)]" DisplayName="If - Verify if the dictionary doesn't contains this credential key" sap:VirtualizedContainerService.HintSize="683,1040" sap2010:WorkflowViewState.IdRef="If_11">
                         <If.Then>
                           <TryCatch DisplayName="Try Catch - Retrieve Credential in orc" sap:VirtualizedContainerService.HintSize="438,880" sap2010:WorkflowViewState.IdRef="TryCatch_12">
                             <sap:WorkflowViewStateService.ViewState>
@@ -396,9 +396,8 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <TryCatch.Try>
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,648" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                              <Sequence DisplayName="Body - Retrieve Credential in orc" sap:VirtualizedContainerService.HintSize="376,648" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                 <Sequence.Variables>
-                                  <Variable x:TypeArguments="x:String" Name="assetValue" />
                                   <Variable x:TypeArguments="x:String" Name="username" />
                                   <Variable x:TypeArguments="ss:SecureString" Name="password" />
                                 </Sequence.Variables>
@@ -407,7 +406,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="334,256" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[if(out_dictionary.Keys.Contains(&quot;RetryNumberOrchestratorInteractions&quot;), Cint(out_dictionary(&quot;RetryNumberOrchestratorInteractions&quot;)), 3)]" RetryInterval="00:00:20">
+                                <ui:RetryScope DisplayName="Retry Scope - get Credential" sap:VirtualizedContainerService.HintSize="334,256" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_maxRetryNumberOrchestratorIteractions]" RetryInterval="00:00:20">
                                   <ui:RetryScope.ActivityBody>
                                     <ActivityAction>
                                       <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[item.Value.ToString]" DisplayName="Get Credential - user and password" sap:VirtualizedContainerService.HintSize="284,80" sap2010:WorkflowViewState.IdRef="GetRobotCredential_6" Password="[password]" Username="[username]" />
@@ -455,21 +454,14 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                   </ActivityAction.Argument>
-                                  <Throw Exception="[new BusinessRuleException(String.Format(&quot;Could not load credential {0} during dictionary initialization.&quot;,{item.Name}))]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_16" />
+                                  <Throw DisplayName="Throw BRE: Credential not found" Exception="[new BusinessRuleException(String.Format(&quot;Could not load credential {0} during dictionary initialization.&quot;,{item.Name}))]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_16" />
                                 </ActivityAction>
                               </Catch>
                             </TryCatch.Catches>
                           </TryCatch>
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Throw Error: Duplicates Keys" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_33">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Throw Exception="[new Exception(&quot;Key already exist on dictionary. Key: &quot; + eachObject.Path )]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_17" />
-                          </Sequence>
+                          <Throw DisplayName="Throw BRE: Duplicate Key" Exception="[new BusinessRuleException(&quot;Key already exist on dictionary. Key: credentials_&quot; + item.Name )]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_19" />
                         </If.Else>
                       </If>
                     </ActivityAction>
@@ -489,13 +481,13 @@
                     <av:Size x:Key="ShapeSize">200,52</av:Size>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - Asset value in asset key" sap:VirtualizedContainerService.HintSize="779,1024" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[eachObject.Values]">
+                <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - Asset value in asset key" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[eachObject.Values]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="njl:JProperty">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="njl:JProperty" Name="item" />
                       </ActivityAction.Argument>
-                      <If Condition="[Not out_dictionary.Keys.Contains(eachObject.Path)]" DisplayName="If - Verify if the dictionary doesn't contains this key" sap:VirtualizedContainerService.HintSize="743,899" sap2010:WorkflowViewState.IdRef="If_9">
+                      <If Condition="[Not out_dictionary.Keys.Contains(eachObject.Path)]" DisplayName="If - Verify if the dictionary doesn't contains this asset key" sap:VirtualizedContainerService.HintSize="701,899" sap2010:WorkflowViewState.IdRef="If_9">
                         <If.Then>
                           <TryCatch DisplayName="Try Catch - Get assets in orc" sap:VirtualizedContainerService.HintSize="456,739" sap2010:WorkflowViewState.IdRef="TryCatch_11">
                             <sap:WorkflowViewStateService.ViewState>
@@ -505,7 +497,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <TryCatch.Try>
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="418,507" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                              <Sequence DisplayName="Body - Get assets in orc" sap:VirtualizedContainerService.HintSize="418,507" sap2010:WorkflowViewState.IdRef="Sequence_28">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="x:String" Name="assetValue" />
                                 </Sequence.Variables>
@@ -514,10 +506,10 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="376,315" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[if(out_dictionary.Keys.Contains(&quot;RetryNumberOrchestratorInteractions&quot;), Cint(out_dictionary(&quot;RetryNumberOrchestratorInteractions&quot;)), 3)]" RetryInterval="00:00:20">
+                                <ui:RetryScope DisplayName="Retry Scope - get Asset" sap:VirtualizedContainerService.HintSize="376,315" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_maxRetryNumberOrchestratorIteractions]" RetryInterval="00:00:20">
                                   <ui:RetryScope.ActivityBody>
                                     <ActivityAction>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[item.Value.ToString]" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="334,139" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
+                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[item.Value.ToString]" DisplayName="Get Asset Value" sap:VirtualizedContainerService.HintSize="334,139" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
                                         <ui:GetRobotAsset.Value>
                                           <OutArgument x:TypeArguments="x:String">[assetValue]</OutArgument>
                                         </ui:GetRobotAsset.Value>
@@ -550,21 +542,14 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                   </ActivityAction.Argument>
-                                  <Throw Exception="[new BusinessRuleException(String.Format(&quot;Could not load asset {0} during dictionary initialization.&quot;,{item.Name}))]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_13" />
+                                  <Throw DisplayName="Throw BRE: Asset not found" Exception="[new BusinessRuleException(String.Format(&quot;Could not load asset {0} during dictionary initialization.&quot;,{item.Name}))]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_13" />
                                 </ActivityAction>
                               </Catch>
                             </TryCatch.Catches>
                           </TryCatch>
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Throw Error: Duplicates Keys" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_29">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Throw Exception="[new Exception(&quot;Key already exist on dictionary. Key: &quot; + eachObject.Path )]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_14" />
-                          </Sequence>
+                          <Throw DisplayName="Throw BRE: Duplicate Key - asset" Exception="[new BusinessRuleException(&quot;Key already exist on dictionary. Key: &quot; + item.Name )]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_20" />
                         </If.Else>
                       </If>
                     </ActivityAction>

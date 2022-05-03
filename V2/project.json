@@ -1,13 +1,10 @@
 {
   "name": "State Machine Template",
   "description": "State machine template with some better defined states",
-  "main": "State Machine Template.xaml",
+  "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.11.4]",
-    "UiPath.Mail.Activities": "[1.12.3]",
     "UiPath.System.Activities": "[21.10.4]",
-    "UiPath.UIAutomation.Activities": "[21.10.5]",
-    "UiPath.WebAPI.Activities": "[1.11.0-preview]"
+    "UiPath.UIAutomation.Activities": "[21.10.5]"
   },
   "webServices": [],
   "entitiesStores": [],

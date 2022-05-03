@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>560,705</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>709,926</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetInputFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -70,26 +70,27 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetInputFiles" sap:VirtualizedContainerService.HintSize="526,640" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetInputFiles" sap:VirtualizedContainerService.HintSize="526,861" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[cBool(in_config(&quot;useStorageBucketFiles&quot;))]" DisplayName="If use storage bucket files" sap:VirtualizedContainerService.HintSize="484,548" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log Message should use storage bucket files" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Should use storage bucket files: &quot; + cBool(in_config(&quot;useStorageBucketFiles&quot;)).ToString]" />
+    <If Condition="[cBool(in_config(&quot;useStorageBucketFiles&quot;))]" DisplayName="If use storage bucket files" sap:VirtualizedContainerService.HintSize="484,543" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Download storage bucket files" sap:VirtualizedContainerService.HintSize="411,358" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Download storage bucket files" sap:VirtualizedContainerService.HintSize="413,356" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DeleteLocalBucketFiles workflow" sap:VirtualizedContainerService.HintSize="369,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="02. Framework\DeleteLocalBucketFiles.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DeleteLocalBucketFiles workflow" sap:VirtualizedContainerService.HintSize="371,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="02. Framework\DeleteLocalBucketFiles.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_localBucketDir">[in_Config("localBucketDir").ToString]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadStorageBucketFiles workflow" sap:VirtualizedContainerService.HintSize="369,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="02. Framework\DownloadStorageBucketFiles.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadStorageBucketFiles workflow" sap:VirtualizedContainerService.HintSize="371,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="02. Framework\DownloadStorageBucketFiles.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_LocalBucketDir">[in_Config("localBucketDir").ToString]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_ProjectName">[in_Config("projectName").ToString]</InArgument>
@@ -107,5 +108,6 @@
         </Sequence>
       </If.Else>
     </If>
+    <ui:Comment DisplayName="Comment get and/or read files from others sources." sap:VirtualizedContainerService.HintSize="484,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Get and/or read files from others sources." />
   </Sequence>
 </Activity>

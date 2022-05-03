@@ -1,62 +1,87 @@
 {
     "development":{
-        "assetDev": "testeDev",
-        "orchestratorQueueName": "OrchestratorQueueNameDev",
-        "orchestratorQueueFolder": "OrchestratorQueueFolderDev",
-        "maxRetryNumberInitApplications": 2,
-        "useStorageBucketFiles": true,
-        "localBucketDir": "01. Data\\Temp\\",
-	"exScreenshotsFolderPath": "Exceptions_Screenshots",
-        "retryNumberOrchestratorInteractions": 3,
-        "manualExecutionTime": 30,
-        "shouldStream": true,
+	"processQueueName":"ProcessQueueNameDev",
+	"processQueueFolder":"ProcessQueueFolderDev",
 
-        "assets":{
-                "citrixUrlDev": "citrixUrl"
-            }, 
+	"initializationLogQueueName":"InitializationLogQueueDev",
+	"initializationLogQueueFolder":"InitializationQueueFolderDev",
 
-        "credentials":{
-                "testeCredentialDev": "testeCredentialDev"
-            }
-    },
-    "homologacao":{
-        "assetHml": "testeHml",
-        "orchestratorQueueName": "OrchestratorQueueNameHml",
-        "orchestratorQueueFolder": "OrchestratorQueueFolderHml",
-        "initMaxRetry": 2,
-        "useStorageBucketFiles": true,
-        "localBucketDir": "01. Data\\Temp\\",
-	"exScreenshotsFolderPath": "Exceptions_Screenshots",
-        "retryNumberOrchestratorInteractions": 3,
-        "manualExecutionTime": 30,
-        "shouldStream": true,
+	"maxRetryNumberInitApplications": 3,
+	"maxRetryNumberProcess": 2,
+	"maxConsecutiveSystemExceptions": 0,
 
-        "assets":{
-            "citrixUrlHml": "citrixUrl"
+	"useStorageBucketFiles": false,
+	"localBucketDir": "Data\\Temp\\",
+	"maxConsecutiveSystemExceptions": 20,
+
+	"manualExecutionTime": 30,
+
+	"exScreenshotsFolderPath":"05. ExceptionScreenshots",
+
+	"assets":{
+            "citrixUrl":"citrixUrlDev"
+        },
+        
+	"credentials":{
+            "testeCredential":"testeCredentialDev"
         },
 
-        "credentials":{
-            "testeCredentialHml": "testeCredentialHml"
-        }
-    },
-    "producao":{
-        "assetPrd": "testePrd",
-        "orchestratorQueueName": "OrchestratorQueueNamePrd",
-        "orchestratorQueueFolder": "OrchestratorQueueFolderPrd",
-        "initMaxRetry": 2,
-        "useStorageBucketFiles": true,
-        "localBucketDir": "01. Data\\Temp\\",
-	"exScreenshotsFolderPath": "Exceptions_Screenshots",
-        "retryNumberOrchestratorInteractions": 3,
-        "manualExecutionTime": 30,
-        "shouldStream": true,
 
-        "assets":{
-            "citrixUrlPrd": "citrixUrl"
+    },
+    "homologation":{
+	"processQueueName":"ProcessQueueNameHml",
+	"processQueueFolder":"ProcessQueueFolderHml",
+
+	"initializationLogQueueName":"InitializationLogQueueHml",
+	"initializationLogQueueFolder":"InitializationQueueFolderHml",
+
+	"maxRetryNumberInitApplications": 3,
+	"maxRetryNumberProcess": 2,
+
+	"useStorageBucketFiles": false,
+	"localBucketDir": "Data\\Temp\\",
+	"maxConsecutiveSystemExceptions": 20,
+
+	"manualExecutionTime": 30,
+
+	"exScreenshotsFolderPath":"05. ExceptionScreenshots",
+
+	"assets":{
+            "citrixUrl":"citrixUrlHml"
+        },
+        
+	"credentials":{
+            "testeCredential":"testeCredentialHml"
         },
 
-        "credentials":{
-            "testeCredentialPrd": "testeCredentialPrd"
-        }
+
+    },
+    "production":{
+	"processQueueName":"ProcessQueueName",
+	"processQueueFolder":"ProcessQueueFolder",
+
+	"initializationLogQueueName":"InitializationLogQueue",
+	"initializationLogQueueFolder":"InitializationQueueFolder",
+
+	"maxRetryNumberInitApplications": 3,
+	"maxRetryNumberProcess": 2,
+
+	"useStorageBucketFiles": false,
+	"localBucketDir": "Data\\Temp\\",
+	"maxConsecutiveSystemExceptions": 20,
+
+	"manualExecutionTime": 30,
+
+	"exScreenshotsFolderPath":"05. ExceptionScreenshots",
+
+	"assets":{
+            "citrixUrl":"citrixUrlProd"
+        },
+        
+	"credentials":{
+            "testeCredential":"testeCredentialProd"
+        },
+
+
     }
 }
