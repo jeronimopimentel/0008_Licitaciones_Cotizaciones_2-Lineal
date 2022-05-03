@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>709,926</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>676,926</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetInputFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -87,13 +87,19 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DeleteLocalBucketFiles workflow" sap:VirtualizedContainerService.HintSize="371,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="02. Framework\DeleteLocalBucketFiles.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_localBucketDir">[in_Config("localBucketDir").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_localBucketDir">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;localBucketDir&quot;).ToString" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadStorageBucketFiles workflow" sap:VirtualizedContainerService.HintSize="371,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="02. Framework\DownloadStorageBucketFiles.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_LocalBucketDir">[in_Config("localBucketDir").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ProjectName">[in_Config("projectName").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_localBucketDir">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;localBucketDir&quot;).ToString" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_projectName">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;projectName&quot;).ToString" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
