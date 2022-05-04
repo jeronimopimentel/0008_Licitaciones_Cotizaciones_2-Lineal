@@ -7,12 +7,9 @@
 	"initializationLogQueueFolder":"InitializationQueueFolderDev",
 
 	"maxRetryNumberInitApplications": 3,
-	"maxRetryNumberProcess": 2,
-	"maxConsecutiveSystemExceptions": 0,
 
 	"useStorageBucketFiles": false,
-	"localBucketDir": "Data\\Temp\\",
-	"maxConsecutiveSystemExceptions": 20,
+	"localBucketDir": "01. Data\\Temp\\",
 
 	"manualExecutionTime": 30,
 
@@ -36,11 +33,9 @@
 	"initializationLogQueueFolder":"InitializationQueueFolderHml",
 
 	"maxRetryNumberInitApplications": 3,
-	"maxRetryNumberProcess": 2,
 
 	"useStorageBucketFiles": false,
-	"localBucketDir": "Data\\Temp\\",
-	"maxConsecutiveSystemExceptions": 20,
+	"localBucketDir": "01. Data\\Temp\\",
 
 	"manualExecutionTime": 30,
 
@@ -64,11 +59,9 @@
 	"initializationLogQueueFolder":"InitializationQueueFolder",
 
 	"maxRetryNumberInitApplications": 3,
-	"maxRetryNumberProcess": 2,
 
 	"useStorageBucketFiles": false,
-	"localBucketDir": "Data\\Temp\\",
-	"maxConsecutiveSystemExceptions": 20,
+	"localBucketDir": "01. Data\\Temp\\",
 
 	"manualExecutionTime": 30,
 
