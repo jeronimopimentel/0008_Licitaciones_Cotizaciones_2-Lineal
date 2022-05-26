@@ -37,7 +37,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>676,783</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1178,783</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LoginSistemaA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -116,10 +116,24 @@
         <ActivityAction>
           <ui:AddTransactionItem ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Adds a new transaction item to the initialization log queue and sets it to 'InProgress' state. Registers the beggining of the application initialization." DisplayName="Start Application Log in Queue" FolderPath="[in_initializationLogQueueFolder]" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="AddTransactionItem_5" QueueType="[in_initializationLogQueueName]" Reference="[String.Format(&quot;{0} - {1} - {2}&quot;, {in_projectName, in_applicationName, Now.ToString(&quot;dd/MM/yyyy HH:mm&quot;)})]" TransactionItem="[applicationInitLog]">
             <ui:AddTransactionItem.TransactionInformation>
-              <InArgument x:TypeArguments="x:String" x:Key="MachineName">[Environment.MachineName]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="UserDomainName">[Environment.UserDomainName]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="User">[Environment.UserName]</InArgument>
-              <InArgument x:TypeArguments="s:DateTime" x:Key="CreationTime">[Now]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="MachineName">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Environment.MachineName" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="UserDomainName">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Environment.UserDomainName" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="User">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Environment.UserName" />
+              </InArgument>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="CreationTime">
+                <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="Now" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="ProjectName">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_projectName" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="ApplicationName">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_applicationName" />
+              </InArgument>
             </ui:AddTransactionItem.TransactionInformation>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
