@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Activity mc:Ignorable="sap sap2010" x:Class="InitializeConfigDictionary" this:InitializeConfigDictionary.in_shouldUseConfigFromStorageBucket="False" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_shouldUseConfigFromStorageBucket" Type="InArgument(x:Boolean)" />
@@ -82,14 +83,14 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message (start InitializeConfigDictionary)" sap:VirtualizedContainerService.HintSize="808,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Initializing settings...&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get the project name setted in project json file" sap:VirtualizedContainerService.HintSize="808,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="02. Framework\GetProjectName.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get the project name setted in project json file" sap:VirtualizedContainerService.HintSize="808,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="02-Framework\GetProjectName.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="out_projectName">[projectName]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <If Condition="[in_shouldUseConfigFromStorageBucket]" DisplayName="Should use config from storage bucket?" sap:VirtualizedContainerService.HintSize="808,270" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ReadConfigFromStorageBucket workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="02. Framework\ReadConfigFromStorageBucket.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ReadConfigFromStorageBucket workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="02-Framework\ReadConfigFromStorageBucket.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_storageBucketName">Configs</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_fullFilePath" xml:space="preserve">["config_" + projectName +  ".json"]</InArgument>
@@ -101,7 +102,7 @@
         <ui:ReadTextFile Content="[textJsonConfig]" DisplayName="Read Config FIle" Encoding="iso-8859-15" FileName="01. Data\config.json" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
       </If.Else>
     </If>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Workflow responsible for converting all the json config file into a dictionary. Including retrieving assets and credentials from orchestrator." DisplayName="Invoke JsonToDictionary workflow" sap:VirtualizedContainerService.HintSize="808,169" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="02. Framework\JsonToDictionary.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Workflow responsible for converting all the json config file into a dictionary. Including retrieving assets and credentials from orchestrator." DisplayName="Invoke JsonToDictionary workflow" sap:VirtualizedContainerService.HintSize="808,169" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="02-Framework\JsonToDictionary.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictionary">[out_config]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_stringJson">[textJsonConfig]</InArgument>

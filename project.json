@@ -1,5 +1,5 @@
 {
-  "name": "State Machine Template",
+  "name": "Template Linear Process",
   "description": "State machine template with some better defined states",
   "main": "Main.xaml",
   "dependencies": {
@@ -45,12 +45,6 @@
     {
       "filePath": "Main.xaml",
       "uniqueId": "a2e4b340-5f5c-401a-a096-5d545feec76b",
-      "input": [],
-      "output": []
-    },
-    {
-      "filePath": "State Machine Template.xaml",
-      "uniqueId": "be50d7f0-b6d5-4480-8828-a0a19d06f47d",
       "input": [],
       "output": []
     }
