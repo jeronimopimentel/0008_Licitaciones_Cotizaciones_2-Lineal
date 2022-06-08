@@ -77,6 +77,7 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID5}" sap2010:Annotation.AnnotationText="AUTOMATED PROCESS INFOMARTION:&#xA;&#xA;- Process title: [Your process title here]&#xA;&#xA;- Process description: [Your process description here]&#xA;&#xA;-------------------------------------------------------&#xA;ADDITIONAL INFORMATION:&#xA;&#xA;- Business Analyst:&#xA;       • [BA name] ([BA'S e-mail])&#xA; &#xA;- Solution Architects: &#xA;       • [SA name] ([SA's e-mail])&#xA;&#xA;- Developers: &#xA;       • [DEV name] ([DEV's e-mail])&#xA;&#xA;- Applications Used: &#xA;       • [Application 1];&#xA;       • [Application 2];&#xA;       • [Application 3]." DisplayName="Linear Process" sap:VirtualizedContainerService.HintSize="1340,1804" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -91,17 +92,17 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <State x:Name="__ReferenceID5" sap2010:Annotation.AnnotationText="-&gt; Kill processes involved in the automation to clear environment.&#xA;-&gt; Start Streaming Server.&#xA;-&gt; Delete temporary files.&#xA;-&gt; Download config file from Storage Bucket; -&gt; Create dictionary from JSON config file;&#xA;-&gt; Initialize variables used in the automation." DisplayName="Initialize Environment" sap:VirtualizedContainerService.HintSize="326,178" sap2010:WorkflowViewState.IdRef="State_1">
+    <State x:Name="__ReferenceID5" sap2010:Annotation.AnnotationText="-&gt; Kill processes involved in the automation to clear environment.&#xA;-&gt; Start Streaming Server.&#xA;-&gt; Delete temporary files.&#xA;-&gt; Download config file from Storage Bucket; -&gt; Create dictionary from JSON config file;&#xA;-&gt; Initialize variables used in the automation." DisplayName="Initialize Environment" sap:VirtualizedContainerService.HintSize="484,1315" sap2010:WorkflowViewState.IdRef="State_1">
       <State.Entry>
-        <TryCatch DisplayName="Try init all settings" sap:VirtualizedContainerService.HintSize="434,183" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch DisplayName="Try init all settings" sap:VirtualizedContainerService.HintSize="438,826" sap2010:WorkflowViewState.IdRef="TryCatch_1">
           <TryCatch.Try>
-            <Sequence DisplayName="Init all settings" sap:VirtualizedContainerService.HintSize="526,804" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Init all settings" sap:VirtualizedContainerService.HintSize="392,599" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <If Condition="[in_shouldStream]" DisplayName="Should Stream?" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="If_12">
+              <If Condition="[in_shouldStream]" DisplayName="Should Stream?" sap:VirtualizedContainerService.HintSize="350,51" sap2010:WorkflowViewState.IdRef="If_12">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -116,12 +117,14 @@
                   </ui:InvokeWorkflowFile>
                 </If.Then>
               </If>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Kill all necessary processes" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="02-Framework\KillAllProcesses.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Kill all necessary processes" sap:VirtualizedContainerService.HintSize="350,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="02-Framework\KillAllProcesses.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_processesNames">
+                    <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{}" />
+                  </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Clear Temp Folder" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="02-Framework\ClearTempFolder.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Clear Temp Folder" sap:VirtualizedContainerService.HintSize="350,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="02-Framework\ClearTempFolder.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <scg:Dictionary x:TypeArguments="x:String, Argument" />
                 </ui:InvokeWorkflowFile.Arguments>
@@ -279,7 +282,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="-&gt; Initialize all the applications used by automation. Obs: Each individual application will have its own initialization and close workflow. Retry will be handled by Retry Scope activities." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="480,627" sap2010:WorkflowViewState.IdRef="State_7">
+            <State x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="-&gt; Initialize all the applications used by automation. Obs: Each individual application will have its own initialization and close workflow. Retry will be handled by Retry Scope activities." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="335,133" sap2010:WorkflowViewState.IdRef="State_7">
               <State.Entry>
                 <TryCatch DisplayName="Try Catch - Initialize all applications" sap:VirtualizedContainerService.HintSize="434,183" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                   <TryCatch.Try>

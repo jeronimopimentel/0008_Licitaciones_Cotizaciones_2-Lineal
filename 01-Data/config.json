@@ -7,21 +7,35 @@
 	"initializationLogQueueFolder":"InitializationQueueFolderDev",
 
 	"maxRetryNumberInitApplications": 3,
+	"maxRetryNumberProcess": 2,
+	"maxConsecutiveSystemExceptions": 0,
 
 	"useStorageBucketFiles": false,
-	"localBucketDir": "01. Data\\Temp\\",
+	"localBucketDir": "01-Data\\Temp\\",
 
 	"manualExecutionTime": 30,
 
-	"exScreenshotsFolderPath":"05. ExceptionScreenshots",
+	"exScreenshotsFolderPath":"05-ExceptionScreenshots",
+
+	"businessProcessName":"",
 
 	"assets":{
-            "citrixUrl":"citrixUrlDev"
+            "exemploAsset":{
+		"name":"Asset1",
+		"orchestratorFolder":"Pasta1/Subpasta1"
+		},
+            "outroAsset":{
+		"name":"Asset2",
+		"orchestratorFolder":"Pasta2/Subpasta1"
+		}
         },
         
 	"credentials":{
-            "testeCredential":"testeCredentialDev"
-        },
+            "testeCredential":{
+		"name":"testCred",
+		"orchestratorFolder":"Pasta1/Subpasta1"
+		}
+	},
 
 
     },
@@ -33,20 +47,34 @@
 	"initializationLogQueueFolder":"InitializationQueueFolderHml",
 
 	"maxRetryNumberInitApplications": 3,
+	"maxRetryNumberProcess": 2,
+	"maxConsecutiveSystemExceptions": 0,
 
 	"useStorageBucketFiles": false,
-	"localBucketDir": "01. Data\\Temp\\",
+	"localBucketDir": "01-Data\\Temp\\",
 
 	"manualExecutionTime": 30,
 
-	"exScreenshotsFolderPath":"05. ExceptionScreenshots",
+	"exScreenshotsFolderPath":"05-ExceptionScreenshots",
+
+	"businessProcessName":"",
 
 	"assets":{
-            "citrixUrl":"citrixUrlHml"
+            "exemploAsset":{
+		"name":"Asset1",
+		"orchestratorFolder":"Pasta1/Subpasta1"
+		},
+            "outroAsset":{
+		"name":"Asset2",
+		"orchestratorFolder":"Pasta2/Subpasta1"
+		}
         },
         
 	"credentials":{
-            "testeCredential":"testeCredentialHml"
+            "testeCredential":{
+		"name":"testCred",
+		"orchestratorFolder":"Pasta1/Subpasta1"
+		}
         },
 
 
@@ -59,20 +87,34 @@
 	"initializationLogQueueFolder":"InitializationQueueFolder",
 
 	"maxRetryNumberInitApplications": 3,
+	"maxRetryNumberProcess": 2,
+	"maxConsecutiveSystemExceptions": 0,
 
 	"useStorageBucketFiles": false,
-	"localBucketDir": "01. Data\\Temp\\",
+	"localBucketDir": "01-Data\\Temp\\",
 
 	"manualExecutionTime": 30,
 
-	"exScreenshotsFolderPath":"05. ExceptionScreenshots",
+	"exScreenshotsFolderPath":"05-ExceptionScreenshots",
+
+	"businessProcessName":"",
 
 	"assets":{
-            "citrixUrl":"citrixUrlProd"
+            "exemploAsset":{
+		"name":"Asset1",
+		"orchestratorFolder":"Pasta1/Subpasta1"
+		},
+            "outroAsset":{
+		"name":"Asset2",
+		"orchestratorFolder":"Pasta2/Subpasta1"
+		}
         },
         
 	"credentials":{
-            "testeCredential":"testeCredentialProd"
+            "testeCredential":{
+		"name":"testCred",
+		"orchestratorFolder":"Pasta1/Subpasta1"
+		}
         },
 
 
