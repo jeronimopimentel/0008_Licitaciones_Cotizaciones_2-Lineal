@@ -89,7 +89,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="480,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
     <ui:Comment DisplayName="Instructions" sap:VirtualizedContainerService.HintSize="480,169" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// The structure below must be used for each application involved in the automation. Copy all the activities and rename them according to the new aplication. Follow the instructions found in the &quot;03-Applications&quot; folder within the project to create the workflows for the new application." />
-    <ui:RetryScope sap2010:Annotation.AnnotationText="Scope to retry initialization attempt for an individual application in case of exceptions.&#xD;&#xA;" DisplayName="Retry Scope - Init Application &lt;Application Name&gt;" sap:VirtualizedContainerService.HintSize="480,707" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(in_config(&quot;maxRetryNumberInitApplications&quot;))]">
+    <ui:RetryScope sap2010:Annotation.AnnotationText="Scope to retry initialization attempt for an individual application in case of exceptions.&#xA;" DisplayName="Retry Scope - Init Application &lt;Application Name&gt;" sap:VirtualizedContainerService.HintSize="480,707" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(in_config(&quot;maxRetryNumberInitApplications&quot;))]">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <TryCatch sap2010:Annotation.AnnotationText="If any exception occur during an attempt to initialize an application, take screenshot before closing it and rethrow exception to retry initialization (if limit has not been reached)" DisplayName="T/C - Init Application &lt;Application Name&gt;" sap:VirtualizedContainerService.HintSize="438,396" sap2010:WorkflowViewState.IdRef="TryCatch_1">
@@ -103,15 +103,27 @@
             <TryCatch.Try>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeAppGeneric workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="03-Applications\ApplicationGeneric\InitializeAppGeneric.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_applicationName">Application A</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_initializationLogQueueName">[in_config("initializationLogQueueName").ToString]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_projectName">[in_config("maxRetryNumberOrchestratorInteractions").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_applicationName">
+                    <Literal x:TypeArguments="x:String">Application A</Literal>
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_initializationLogQueueName">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;initializationLogQueueName&quot;).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_projectName">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;projectName&quot;).ToString" />
+                  </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_username" />
                   <InArgument x:TypeArguments="ss:SecureString" x:Key="in_password" />
                   <InArgument x:TypeArguments="x:String" x:Key="in_applicationUrl" />
-                  <InArgument x:TypeArguments="x:String" x:Key="in_initializationLogQueueFolder">[in_config("initializationLogQueueFolder").ToString]</InArgument>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeoutMs">30000</InArgument>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_maxRetryNumberOrchestratorInteractions">[Cint(in_config("maxRetryNumberOrchestratorInteractions"))]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_initializationLogQueueFolder">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;initializationLogQueueFolder&quot;).ToString" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_timeoutMs">
+                    <Literal x:TypeArguments="x:Int32" Value="30000" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_maxRetryNumberOrchestratorInteractions">
+                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_config(&quot;maxRetryNumberOrchestratorInteractions&quot;))" />
+                  </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -132,7 +144,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Catch Init Exception - Application A" sap:VirtualizedContainerService.HintSize="421,514" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <Sequence DisplayName="Catch Init Exception - Application A" sap:VirtualizedContainerService.HintSize="421,546" sap2010:WorkflowViewState.IdRef="Sequence_10">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
