@@ -1,0 +1,13 @@
+For each application involved in the automation, a copy of the folder "ApplicationGeneric" must be created and edited as follows:
+
+1) Rename folder name according to the aplication name.
+E.g.
+For SAP Application, the folder must be renamed from "ApplicationGeneric" to "Sap"
+
+2) Rename activities "InitializeAppGeneric" and "CloseOrKillAppGeneric" according to the aplication name.
+E.g.
+For SAP Application, the activities must be renamed to "InitializeSap" and "CloseOrKillSap", respectively.
+
+3) Change ActivityBuilder name and Sequence name within each workflow to match their new names. 
+
+4) Any other workflow that must be created to interact with an application should be placed in its folder. 
