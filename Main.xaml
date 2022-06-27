@@ -10,7 +10,6 @@
     <x:Property sap2010:Annotation.AnnotationText="Allows the Orchestrator queue name to be passed as an argument, instead of only being defined in the configuration file." Name="in_processQueueName" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Allows the Orchestrator folder name where the queue is created to be passed as an argument, instead of only being defined in the configuration file." Name="in_processQueueFolder" Type="InArgument(x:String)" />
     <x:Property Name="in_shouldStream" Type="InArgument(x:Boolean)" />
-    <x:Property Name="in_maxRetryNumberOrchestratorIteractions" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -92,7 +91,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <State x:Name="__ReferenceID5" sap2010:Annotation.AnnotationText="-&gt; Kill processes involved in the automation to clear environment.&#xA;-&gt; Start Streaming Server.&#xA;-&gt; Delete temporary files.&#xA;-&gt; Download config file from Storage Bucket; -&gt; Create dictionary from JSON config file;&#xA;-&gt; Initialize variables used in the automation." DisplayName="Initialize Environment" sap:VirtualizedContainerService.HintSize="484,1315" sap2010:WorkflowViewState.IdRef="State_1">
+    <State x:Name="__ReferenceID5" sap2010:Annotation.AnnotationText="-&gt; Kill processes involved in the automation to clear environment.&#xA;-&gt; Start Streaming Server.&#xA;-&gt; Delete temporary files.&#xA;-&gt; Download config file from Storage Bucket; -&gt; Create dictionary from JSON config file;&#xA;-&gt; Initialize variables used in the automation." DisplayName="Initialize Environment" sap:VirtualizedContainerService.HintSize="326,178" sap2010:WorkflowViewState.IdRef="State_1">
       <State.Entry>
         <TryCatch DisplayName="Try init all settings" sap:VirtualizedContainerService.HintSize="438,826" sap2010:WorkflowViewState.IdRef="TryCatch_1">
           <TryCatch.Try>
@@ -119,9 +118,7 @@
               </If>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Kill all necessary processes" sap:VirtualizedContainerService.HintSize="350,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="02-Framework\KillAllProcesses.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="s:String[]" x:Key="in_processesNames">
-                    <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{}" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_processesNames">[{}]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Clear Temp Folder" sap:VirtualizedContainerService.HintSize="350,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="02-Framework\ClearTempFolder.xaml">
@@ -131,18 +128,27 @@
               </ui:InvokeWorkflowFile>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Initialize all necessary settings in config" sap:VirtualizedContainerService.HintSize="350,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="02-Framework\InitializeConfigDictionary.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_shouldUseConfigFromStorageBucket">[in_shouldUseConfigFromStorageBucket]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_environment">[in_environment]</InArgument>
-                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_config">[config]</OutArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueFolder">[in_processQueueFolder]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueName">[in_processQueueName]</InArgument>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_maxRetryNumberOrchestratorIteractions">[in_maxRetryNumberOrchestratorIteractions]</InArgument>
+                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_shouldUseConfigFromStorageBucket">
+                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="in_shouldUseConfigFromStorageBucket" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_environment">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_environment" />
+                  </InArgument>
+                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_config">
+                    <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="config" />
+                  </OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueFolder">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_processQueueFolder" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueName">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_processQueueName" />
+                  </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
             </Sequence>
           </TryCatch.Try>
           <TryCatch.Catches>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -284,16 +290,18 @@
           <Transition.To>
             <State x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="-&gt; Initialize all the applications used by automation. Obs: Each individual application will have its own initialization and close workflow. Retry will be handled by Retry Scope activities." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="335,133" sap2010:WorkflowViewState.IdRef="State_7">
               <State.Entry>
-                <TryCatch DisplayName="Try Catch - Initialize all applications" sap:VirtualizedContainerService.HintSize="434,183" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                <TryCatch DisplayName="Try Catch - Initialize all applications" sap:VirtualizedContainerService.HintSize="438,339" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                   <TryCatch.Try>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitAllApplications workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="02-Framework\InitAllApplications.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_config">[config]</InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_config">
+                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="config" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_6">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>

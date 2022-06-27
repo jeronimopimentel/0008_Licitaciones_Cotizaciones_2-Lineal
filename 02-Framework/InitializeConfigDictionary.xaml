@@ -1,11 +1,10 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="InitializeConfigDictionary" this:InitializeConfigDictionary.in_shouldUseConfigFromStorageBucket="False" this:InitializeConfigDictionary.in_maxRetryNumberOrchestratorIteractions="3" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="InitializeConfigDictionary" this:InitializeConfigDictionary.in_shouldUseConfigFromStorageBucket="False" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_shouldUseConfigFromStorageBucket" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_environment" Type="InArgument(x:String)" />
     <x:Property Name="out_config" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property sap2010:Annotation.AnnotationText="Allows the Orchestrator folder name where the queue is created to be passed as an argument, instead of only being defined in the configuration file." Name="in_processQueueFolder" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Allows the Orchestrator queue name to be passed as an argument, instead of only being defined in the configuration file." Name="in_processQueueName" Type="InArgument(x:String)" />
-    <x:Property Name="in_maxRetryNumberOrchestratorIteractions" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -76,6 +75,7 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="projectName" />
       <Variable x:TypeArguments="x:String" Name="textJsonConfig" />
+      <Variable x:TypeArguments="x:Int32" Default="3" Name="maxRetryNumberOrchestratorIteractions" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -114,7 +114,7 @@
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_environment" />
         </InArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_maxRetryNumberOrchestratorInteractions">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_maxRetryNumberOrchestratorIteractions" />
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="maxRetryNumberOrchestratorIteractions" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
@@ -136,7 +136,7 @@
         <OutArgument x:TypeArguments="x:Object">[out_config("maxRetryNumberOrchestratorIteractions")]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Object">[in_maxRetryNumberOrchestratorIteractions]</InArgument>
+        <InArgument x:TypeArguments="x:Int32">[maxRetryNumberOrchestratorIteractions]</InArgument>
       </Assign.Value>
     </Assign>
     <Sequence DisplayName="Replace Config values with arguments" sap:VirtualizedContainerService.HintSize="808,740" sap2010:WorkflowViewState.IdRef="Sequence_2">
