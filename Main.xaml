@@ -128,21 +128,11 @@
               </ui:InvokeWorkflowFile>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Initialize all necessary settings in config" sap:VirtualizedContainerService.HintSize="350,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="02-Framework\InitializeConfigDictionary.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_shouldUseConfigFromStorageBucket">
-                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="in_shouldUseConfigFromStorageBucket" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_environment">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_environment" />
-                  </InArgument>
-                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_config">
-                    <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="config" />
-                  </OutArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueFolder">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_processQueueFolder" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueName">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_processQueueName" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_shouldUseConfigFromStorageBucket">[in_shouldUseConfigFromStorageBucket]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_environment">[in_environment]</InArgument>
+                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_config">[config]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueFolder">[in_processQueueFolder]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueName">[in_processQueueName]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
             </Sequence>
@@ -294,9 +284,7 @@
                   <TryCatch.Try>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitAllApplications workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="02-Framework\InitAllApplications.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_config">
-                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="config" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_config">[config]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>
@@ -443,7 +431,7 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.Condition>[systemException Is Nothing AndAlso businessException Is Nothing]</Transition.Condition>
                           <Transition.To>
-                            <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="-&gt; Process the current transaction item." DisplayName="Process" sap:VirtualizedContainerService.HintSize="305,103" sap2010:WorkflowViewState.IdRef="State_5">
+                            <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="-&gt; Process the current transaction item." DisplayName="Process" sap:VirtualizedContainerService.HintSize="484,1221" sap2010:WorkflowViewState.IdRef="State_5">
                               <State.Entry>
                                 <TryCatch DisplayName="Try process" sap:VirtualizedContainerService.HintSize="438,776" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                                   <TryCatch.Try>
@@ -453,7 +441,7 @@
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:RetryScope DisplayName="Retry Start Add Transaction Item" sap:VirtualizedContainerService.HintSize="334,283" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[Cint(config(&quot;maxRetryNumberOrchestratorIteractions&quot;))]" RetryInterval="00:00:20">
+                                      <ui:RetryScope DisplayName="Retry Start Add Transaction Item" sap:VirtualizedContainerService.HintSize="334,283" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[Cint(config(&quot;maxRetryNumberOrchestratorInteractions&quot;))]" RetryInterval="00:00:20">
                                         <ui:RetryScope.ActivityBody>
                                           <ActivityAction>
                                             <ui:AddTransactionItem ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Adds a new transaction item to the process queue and sets it to 'InProgress' state. Registers the beggining of the transaction." DisplayName="Add Process Transaction Item" FolderPath="[config(&quot;processQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="AddTransactionItem_2" QueueType="[config(&quot;processQueueName&quot;).ToString]" TransactionItem="[transactionItem]">

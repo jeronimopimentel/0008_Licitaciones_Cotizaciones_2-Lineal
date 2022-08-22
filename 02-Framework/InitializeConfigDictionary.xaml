@@ -75,7 +75,7 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="projectName" />
       <Variable x:TypeArguments="x:String" Name="textJsonConfig" />
-      <Variable x:TypeArguments="x:Int32" Default="3" Name="maxRetryNumberOrchestratorIteractions" />
+      <Variable x:TypeArguments="x:Int32" Default="3" Name="maxRetryNumberOrchestratorInteractions" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -104,18 +104,10 @@
     </If>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Workflow responsible for converting all the json config file into a dictionary. Including retrieving assets and credentials from orchestrator." DisplayName="Invoke JsonToDictionary workflow" sap:VirtualizedContainerService.HintSize="808,169" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="02-Framework\JsonToDictionary.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictionary">
-          <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="out_config" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_stringJson">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="textJsonConfig" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_environment">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_environment" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_maxRetryNumberOrchestratorInteractions">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="maxRetryNumberOrchestratorIteractions" />
-        </InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictionary">[out_config]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_stringJson">[textJsonConfig]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_environment">[in_environment]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_maxRetryNumberOrchestratorInteractions">[maxRetryNumberOrchestratorInteractions]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -131,12 +123,12 @@
         <InArgument x:TypeArguments="x:Object">[projectName]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Insert maxRetryNumberOrchestratorIteractions into config dict" sap:VirtualizedContainerService.HintSize="808,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="Insert maxRetryNumberOrchestratorInteractions into config dict" sap:VirtualizedContainerService.HintSize="808,60" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:Object">[out_config("maxRetryNumberOrchestratorIteractions")]</OutArgument>
+        <OutArgument x:TypeArguments="x:Object">[out_config("maxRetryNumberOrchestratorInteractions")]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[maxRetryNumberOrchestratorIteractions]</InArgument>
+        <InArgument x:TypeArguments="x:Object">[maxRetryNumberOrchestratorInteractions]</InArgument>
       </Assign.Value>
     </Assign>
     <Sequence DisplayName="Replace Config values with arguments" sap:VirtualizedContainerService.HintSize="808,740" sap2010:WorkflowViewState.IdRef="Sequence_2">
