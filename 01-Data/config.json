@@ -35,7 +35,7 @@
 		"name":"testCred",
 		"orchestratorFolder":"Pasta1/Subpasta1"
 		}
-	},
+	}
 
 
     },
@@ -75,7 +75,7 @@
 		"name":"testCred",
 		"orchestratorFolder":"Pasta1/Subpasta1"
 		}
-        },
+        }
 
 
     },
@@ -115,7 +115,7 @@
 		"name":"testCred",
 		"orchestratorFolder":"Pasta1/Subpasta1"
 		}
-        },
+        }
 
 
     }
