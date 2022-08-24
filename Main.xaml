@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1330,1869</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794,1869</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>State_Machine_Template_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -128,24 +128,22 @@
               </ui:InvokeWorkflowFile>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Initialize all necessary settings in config" sap:VirtualizedContainerService.HintSize="378,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="02-Framework\InitializeConfigDictionary.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_shouldUseConfigFromStorageBucket">[in_shouldUseConfigFromStorageBucket]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_environment">[in_environment]</InArgument>
-                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_config">[config]</OutArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueFolder">[in_processQueueFolder]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueName">[in_processQueueName]</InArgument>
+                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_shouldUseConfigFromStorageBucket">
+                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="in_shouldUseConfigFromStorageBucket" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_environment">
+                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_environment" />
+                  </InArgument>
+                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_config">
+                    <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="config" />
+                  </OutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ReplaceConfigWithArguments workflow" sap:VirtualizedContainerService.HintSize="378,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="02-Framework\ReplaceConfigWithArguments.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_config">
-                    <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="config" />
-                  </InOutArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueName">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_processQueueName" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueFolder">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_processQueueFolder" />
-                  </InArgument>
+                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_config">[config]</InOutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueName">[in_processQueueName]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_processQueueFolder">[in_processQueueFolder]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
             </Sequence>
