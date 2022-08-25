@@ -37,7 +37,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1240,1788</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1178,1788</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LoginSistemaA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -204,7 +204,7 @@
                   <ui:RetryScope DisplayName="Retry Set Transaction Status - BusinessRuleException" sap:VirtualizedContainerService.HintSize="334,253" sap2010:WorkflowViewState.IdRef="RetryScope_6" NumberOfRetries="[in_maxRetryNumberOrchestratorInteractions]">
                     <ui:RetryScope.ActivityBody>
                       <ActivityAction>
-                        <ui:SetTransactionStatus ContinueOnError="{x:Null}" ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Set Transaction Status - BusinessRuleException" ErrorType="Business" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_4" Reason="[exception.Message]" Status="Failed" TransactionItem="[applicationInitLog]">
+                        <ui:SetTransactionStatus ContinueOnError="{x:Null}" ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Set Transaction Status - BusinessRuleException" ErrorType="Business" FolderPath="[in_initializationLogQueueFolder]" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_4" Reason="[exception.Message]" Status="Failed" TransactionItem="[applicationInitLog]">
                           <ui:SetTransactionStatus.Analytics>
                             <scg:Dictionary x:TypeArguments="x:String, InArgument" />
                           </ui:SetTransactionStatus.Analytics>
@@ -294,7 +294,7 @@
                   <ui:RetryScope DisplayName="Retry Set Transaction Status - SystemException" sap:VirtualizedContainerService.HintSize="334,253" sap2010:WorkflowViewState.IdRef="RetryScope_7" NumberOfRetries="[in_maxRetryNumberOrchestratorInteractions]">
                     <ui:RetryScope.ActivityBody>
                       <ActivityAction>
-                        <ui:SetTransactionStatus ContinueOnError="{x:Null}" ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Set Transaction Status - SystemException" ErrorType="Application" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_5" Reason="[exception.Message]" Status="Failed" TransactionItem="[applicationInitLog]">
+                        <ui:SetTransactionStatus ContinueOnError="{x:Null}" ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Set Transaction Status - SystemException" ErrorType="Application" FolderPath="[in_initializationLogQueueFolder]" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_5" Reason="[exception.Message]" Status="Failed" TransactionItem="[applicationInitLog]">
                           <ui:SetTransactionStatus.Analytics>
                             <scg:Dictionary x:TypeArguments="x:String, InArgument" />
                           </ui:SetTransactionStatus.Analytics>
@@ -327,7 +327,7 @@
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Catch Set Transaction Status - SystemException" sap:VirtualizedContainerService.HintSize="376,114" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                      <Sequence DisplayName="Catch Set Transaction Status - SystemException" sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_22">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -375,7 +375,7 @@
           <ui:RetryScope DisplayName="Retry Set Transaction Status - Success" sap:VirtualizedContainerService.HintSize="334,253" sap2010:WorkflowViewState.IdRef="RetryScope_8" NumberOfRetries="[in_maxRetryNumberOrchestratorInteractions]">
             <ui:RetryScope.ActivityBody>
               <ActivityAction>
-                <ui:SetTransactionStatus ContinueOnError="{x:Null}" Reason="{x:Null}" ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Set Transaction Status - Success" ErrorType="Business" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_6" Status="Successful" TransactionItem="[applicationInitLog]">
+                <ui:SetTransactionStatus ContinueOnError="{x:Null}" Reason="{x:Null}" ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Set Transaction Status - Success" ErrorType="Business" FolderPath="[in_initializationLogQueueFolder]" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_6" Status="Successful" TransactionItem="[applicationInitLog]">
                   <ui:SetTransactionStatus.Analytics>
                     <scg:Dictionary x:TypeArguments="x:String, InArgument" />
                   </ui:SetTransactionStatus.Analytics>
