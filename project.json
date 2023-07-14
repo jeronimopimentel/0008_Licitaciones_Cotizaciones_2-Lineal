@@ -1,10 +1,13 @@
 {
-  "name": "Template Linear Process",
+  "name": "SmarthisTemplateLinear",
+  "projectId": "07a9d9e6-d218-4d20-8c49-0d6b60b2c848",
   "description": "State machine template with some better defined states",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.System.Activities": "[21.10.4]",
-    "UiPath.UIAutomation.Activities": "[21.10.5]",
+    "UiPath.Mail.Activities": "[1.20.2]",
+    "UiPath.MicrosoftOffice365.Activities": "[2.2.6]",
+    "UiPath.System.Activities": "[23.4.3]",
+    "UiPath.UIAutomation.Activities": "[23.4.7]",
     "UiPath.WebAPI.Activities": "[1.11.1]"
   },
   "webServices": [],
@@ -19,6 +22,7 @@
     "isAttended": false,
     "requiresUserInteraction": true,
     "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
     "excludedLoggedData": [
       "Private:*",
       "*password*"
@@ -26,7 +30,8 @@
     "executionType": "Workflow",
     "readyForPiP": false,
     "startsInPiP": false,
-    "mustRestoreAllDependencies": true
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
   },
   "designOptions": {
     "projectProfile": "Developement",
@@ -53,5 +58,5 @@
   "isTemplate": true,
   "templateProjectData": {},
   "publishData": {},
-  "targetFramework": "Legacy"
+  "targetFramework": "Windows"
 }

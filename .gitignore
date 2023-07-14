@@ -1,4 +1,4 @@
 .local/
-.objects/
-.settings/
 .tmh/
+.objects/
+.project/
