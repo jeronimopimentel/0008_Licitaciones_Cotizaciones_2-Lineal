@@ -1,11 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="InitializeAppGeneric" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="InitializeAppGeneric" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_applicationName" Type="InArgument(x:String)">
-      <x:Property.Attributes>
-        <RequiredArgumentAttribute />
-      </x:Property.Attributes>
-    </x:Property>
-    <x:Property Name="in_projectName" Type="InArgument(x:String)">
       <x:Property.Attributes>
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
@@ -14,11 +9,6 @@
     <x:Property Name="in_password" Type="InArgument(ss:SecureString)" />
     <x:Property Name="in_applicationUrl" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Sets how long the automation waits for the application response on the initialization attempt. If no element is found until then, a System Exception is thrown. (in milliseconds)" Name="in_timeoutMs" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_maxRetryNumberOrchestratorInteractions" Type="InArgument(x:Int32)">
-      <x:Property.Attributes>
-        <RequiredArgumentAttribute />
-      </x:Property.Attributes>
-    </x:Property>
   </x:Members>
   <this:InitializeAppGeneric.in_timeoutMs>
     <InArgument x:TypeArguments="x:Int32" />
@@ -26,7 +16,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1598,1168</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1634,794.6666666666666</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LoginSistemaA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -106,64 +96,16 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="InitializeAppGeneric" sap:VirtualizedContainerService.HintSize="550.6666666666666,1103.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="ui:QueueItem" sap2010:Annotation.AnnotationText="QueueItem used for registering logs of this application initialization." Name="applicationInitLog" />
-    </Sequence.Variables>
+  <Sequence DisplayName="InitializeAppGeneric" sap:VirtualizedContainerService.HintSize="450,730" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - inicio login" sap:VirtualizedContainerService.HintSize="488.6666666666667,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Inicializando aplicação: {0}&quot;, in_applicationName)]" />
-    <TryCatch DisplayName="T/C - Initialize Application" sap:VirtualizedContainerService.HintSize="488.6666666666667,623.3333333333334" sap2010:WorkflowViewState.IdRef="TryCatch_6">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <TryCatch.Try>
-        <Sequence DisplayName="Initialize Application" sap:VirtualizedContainerService.HintSize="450,360.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_19">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:Comment DisplayName="Comment 1" sap:VirtualizedContainerService.HintSize="388,56.666666666666664" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Start application/browser" />
-          <ui:Comment DisplayName="Comment 2" sap:VirtualizedContainerService.HintSize="388,56.666666666666664" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Login to application (if necessary)" />
-          <ui:Comment DisplayName="Comment 3" sap:VirtualizedContainerService.HintSize="388,56.666666666666664" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Navigate to start page (if necessary)" />
-        </Sequence>
-      </TryCatch.Try>
-      <TryCatch.Catches>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="454.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_5">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ActivityAction x:TypeArguments="ui:BusinessRuleException">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
-            </ActivityAction.Argument>
-          </ActivityAction>
-        </Catch>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_7">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ActivityAction x:TypeArguments="s:Exception">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-            </ActivityAction.Argument>
-          </ActivityAction>
-        </Catch>
-      </TryCatch.Catches>
-    </TryCatch>
-    <ui:LogMessage DisplayName="Log Message - Success" sap:VirtualizedContainerService.HintSize="488.6666666666667,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[String.Format(&quot;Application initialization successful: {0}&quot;, in_applicationName)]" />
+    <ui:LogMessage DisplayName="Log Message - inicio login" sap:VirtualizedContainerService.HintSize="388,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Inicializando aplicação: {0}&quot;, in_applicationName)]" />
+    <ui:Comment DisplayName="Comment 1" sap:VirtualizedContainerService.HintSize="388,56.666666666666664" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Start application/browser" />
+    <ui:Comment DisplayName="Comment 2" sap:VirtualizedContainerService.HintSize="388,56.666666666666664" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Login to application (if necessary)" />
+    <ui:Comment DisplayName="Comment 3" sap:VirtualizedContainerService.HintSize="388,56.666666666666664" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Navigate to start page (if necessary)" />
+    <ui:LogMessage DisplayName="Log Message - Success" sap:VirtualizedContainerService.HintSize="388,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[String.Format(&quot;Application initialization successful: {0}&quot;, in_applicationName)]" />
   </Sequence>
 </Activity>

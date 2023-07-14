@@ -18,7 +18,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1463.3333333333333,4910</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1634,5153.333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendReportMicrosoftOffice365_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -116,7 +116,7 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SendReportTicketSam" sap:VirtualizedContainerService.HintSize="714.6666666666666,4845.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SendReportTicketSam" sap:VirtualizedContainerService.HintSize="714.6666666666666,5088.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strRequestAttachmentPath" />
       <Variable x:TypeArguments="x:String" Name="strTagSubject" />
@@ -128,7 +128,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message - open automatic ticket in SAM" sap:VirtualizedContainerService.HintSize="652.6666666666666,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;#################Getting ready to open automatic ticket in SAM...#################&quot;]" />
+    <ui:LogMessage DisplayName="Log message - open automatic ticket in SAM" sap:VirtualizedContainerService.HintSize="652.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;#################Getting ready to open automatic ticket in SAM...#################&quot;]" />
     <InvokeMethod DisplayName="Invoke method set a encoding provider" sap:VirtualizedContainerService.HintSize="652.6666666666666,138.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="RegisterProvider" TargetType="st:Encoding">
       <InArgument x:TypeArguments="st:EncodingProvider">[System.Text.CodePagesEncodingProvider.Instance]</InArgument>
     </InvokeMethod>
@@ -153,14 +153,14 @@
         <InArgument x:TypeArguments="x:String">[String.Format("[AUTO][{0}][{1}]{2}",in_ticketClient,in_ticketOrchestratorName,in_ticketSubject)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence DisplayName="Analyze attachments to put on ticket" sap:VirtualizedContainerService.HintSize="652.6666666666666,3324" sap2010:WorkflowViewState.IdRef="Sequence_10">
+    <Sequence DisplayName="Analyze attachments to put on ticket" sap:VirtualizedContainerService.HintSize="652.6666666666666,3518.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_10">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If Condition="[Not String.IsNullOrEmpty(in_attachmentsPaths)]" DisplayName="If - Have at least an attachment" sap:VirtualizedContainerService.HintSize="590.6666666666666,3213.3333333333335" sap2010:WorkflowViewState.IdRef="If_5">
+      <If Condition="[Not String.IsNullOrEmpty(in_attachmentsPaths)]" DisplayName="If - Have at least an attachment" sap:VirtualizedContainerService.HintSize="590.6666666666666,3408" sap2010:WorkflowViewState.IdRef="If_5">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -169,7 +169,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence DisplayName="Prepare files to be attached" sap:VirtualizedContainerService.HintSize="556.6666666666666,3029.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Prepare files to be attached" sap:VirtualizedContainerService.HintSize="556.6666666666666,3224" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="s:String[]" Name="arrAttachmentPaths" />
               <Variable x:TypeArguments="x:String" Name="samTicketAttachmentsFolderPath" />
@@ -194,7 +194,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <If Condition="[Directory.Exists(samTicketAttachmentsFolderPath)]" DisplayName="If - Folder SAM_Ticket_Attachments exists, delete it" sap:VirtualizedContainerService.HintSize="514.6666666666666,489.3333333333333" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[Directory.Exists(samTicketAttachmentsFolderPath)]" DisplayName="If - Folder SAM_Ticket_Attachments exists, delete it" sap:VirtualizedContainerService.HintSize="514.6666666666666,538" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -202,13 +202,13 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Delete folder of attachments" sap:VirtualizedContainerService.HintSize="376,305.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Delete folder of attachments" sap:VirtualizedContainerService.HintSize="376,354" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log message - deleting attachments folders" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;Deleting attachments folder {0} ...&quot;,samTicketAttachmentsFolderPath)]" />
+                  <ui:LogMessage DisplayName="Log message - deleting attachments folders" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;Deleting attachments folder {0} ...&quot;,samTicketAttachmentsFolderPath)]" />
                   <ui:DeleteFolderX DisplayName="Delete Folder - SAM_Ticket_Attachments" sap:VirtualizedContainerService.HintSize="334,82" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[samTicketAttachmentsFolderPath]" Recursive="True" />
                 </Sequence>
               </If.Then>
@@ -223,7 +223,7 @@
               </If.Else>
             </If>
             <Delay DisplayName="Delay - 2s" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="514.6666666666666,92" sap2010:WorkflowViewState.IdRef="Delay_1" />
-            <ui:LogMessage DisplayName="Log Message - create folder samTicketAttachmentsFolder" sap:VirtualizedContainerService.HintSize="514.6666666666666,96" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[String.Format(&quot;Create folder {0}.&quot;,samTicketAttachmentsFolderPath)]" />
+            <ui:LogMessage DisplayName="Log Message - create folder samTicketAttachmentsFolder" sap:VirtualizedContainerService.HintSize="514.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[String.Format(&quot;Create folder {0}.&quot;,samTicketAttachmentsFolderPath)]" />
             <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder - samTicketAttachmentsFolderPath " sap:VirtualizedContainerService.HintSize="514.6666666666666,82" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[samTicketAttachmentsFolderPath]" />
             <Assign DisplayName="Assign - arrAttachmentPaths" sap:VirtualizedContainerService.HintSize="514.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_4">
               <Assign.To>
@@ -233,21 +233,21 @@
                 <InArgument x:TypeArguments="s:String[]">[split(in_attachmentsPaths.Replace(" ;", ";").Replace("; ", ";"), ";"c)]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:LogMessage DisplayName="Log message - files quantity" sap:VirtualizedContainerService.HintSize="514.6666666666666,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Have {0} files to attach. Packing it...&quot;, arrAttachmentPaths.Length)]" />
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each attachment path" sap:VirtualizedContainerService.HintSize="514.6666666666666,812" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrAttachmentPaths]">
+            <ui:LogMessage DisplayName="Log message - files quantity" sap:VirtualizedContainerService.HintSize="514.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Have {0} files to attach. Packing it...&quot;, arrAttachmentPaths.Length)]" />
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each attachment path" sap:VirtualizedContainerService.HintSize="514.6666666666666,860.6666666666666" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrAttachmentPaths]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="attachmentPath" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Check if file really exists before sending to folder to be zipped" sap:VirtualizedContainerService.HintSize="480.6666666666667,622" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence DisplayName="Check if file really exists before sending to folder to be zipped" sap:VirtualizedContainerService.HintSize="480.6666666666667,670.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="438.6666666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[String.Format(&quot;Copy file from {0} to {1}.&quot;,attachmentPath,Path.Combine(samTicketAttachmentsFolderPath,Path.GetFileName(attachmentPath)))]" />
+                    <ui:LogMessage DisplayName="Log Message - copy file attachment" sap:VirtualizedContainerService.HintSize="438.6666666666667,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[String.Format(&quot;Copy file from {0} to {1}.&quot;,attachmentPath,Path.Combine(samTicketAttachmentsFolderPath,Path.GetFileName(attachmentPath)))]" />
                     <TryCatch DisplayName="T/C - Copy file to folder" sap:VirtualizedContainerService.HintSize="438.6666666666667,398.6666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -270,7 +270,7 @@
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                             </ActivityAction.Argument>
-                            <ui:LogMessage DisplayName="Log message - failed to copy file" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[String.Format(&quot;Failed copying file {0} to SAM Attachments Folder. It will not be attached to the ticket.&quot;, exception.Message)]" />
+                            <ui:LogMessage DisplayName="Log message - failed to copy file" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[String.Format(&quot;Failed copying file {0} to SAM Attachments Folder. It will not be attached to the ticket.&quot;, exception.Message)]" />
                           </ActivityAction>
                         </Catch>
                       </TryCatch.Catches>
@@ -432,9 +432,7 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" BodyFormat="multipart/form-data" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request - create ticket with attachments" EnableSSLVerification="True" EndPoint="https://smarthis-help.freshdesk.com/api/v2/tickets" sap:VirtualizedContainerService.HintSize="258,72" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[responseContent]" SecurePassword="[in_ticketPasswordApi]" StatusCode="[statusCode]" TimeoutMS="12000" Username="[in_ticketUsernameApi]">
             <ui:HttpClient.Attachments>
-              <InArgument x:TypeArguments="x:String" x:Key="attachments[]">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRequestAttachmentPath" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="attachments[]">[strRequestAttachmentPath]</InArgument>
             </ui:HttpClient.Attachments>
             <ui:HttpClient.Cookies>
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
