@@ -1,122 +1,29 @@
-{
-    "development":{
-	"processQueueName":"ProcessQueueNameDev",
-	"processQueueFolder":"ProcessQueueFolderDev",
-
-	"initializationLogQueueName":"InitializationLogQueueDev",
-	"initializationLogQueueFolder":"InitializationQueueFolderDev",
-
-	"maxRetryNumberInitApplications": 3,
-	"maxRetryNumberProcess": 2,
-	"maxConsecutiveSystemExceptions": 0,
-
-	"useStorageBucketFiles": false,
-	"localBucketDir": "01-Data\\Temp\\",
-
-	"manualExecutionTime": 30,
-
-	"exScreenshotsFolderPath":"05-ExceptionScreenshots",
-
-	"businessProcessName":"",
-
-	"assets":{
-            "exemploAsset":{
-		"name":"Asset1",
-		"orchestratorFolder":"Pasta1/Subpasta1"
-		},
-            "outroAsset":{
-		"name":"Asset2",
-		"orchestratorFolder":"Pasta2/Subpasta1"
-		}
-        },
-        
-	"credentials":{
-            "testeCredential":{
-		"name":"testCred",
-		"orchestratorFolder":"Pasta1/Subpasta1"
-		}
-	}
-
-
-    },
-    "homologation":{
-	"processQueueName":"ProcessQueueNameHml",
-	"processQueueFolder":"ProcessQueueFolderHml",
-
-	"initializationLogQueueName":"InitializationLogQueueHml",
-	"initializationLogQueueFolder":"InitializationQueueFolderHml",
-
-	"maxRetryNumberInitApplications": 3,
-	"maxRetryNumberProcess": 2,
-	"maxConsecutiveSystemExceptions": 0,
-
-	"useStorageBucketFiles": false,
-	"localBucketDir": "01-Data\\Temp\\",
-
-	"manualExecutionTime": 30,
-
-	"exScreenshotsFolderPath":"05-ExceptionScreenshots",
-
-	"businessProcessName":"",
-
-	"assets":{
-            "exemploAsset":{
-		"name":"Asset1",
-		"orchestratorFolder":"Pasta1/Subpasta1"
-		},
-            "outroAsset":{
-		"name":"Asset2",
-		"orchestratorFolder":"Pasta2/Subpasta1"
-		}
-        },
-        
-	"credentials":{
-            "testeCredential":{
-		"name":"testCred",
-		"orchestratorFolder":"Pasta1/Subpasta1"
-		}
-        }
-
-
-    },
-    "production":{
-	"processQueueName":"ProcessQueueName",
-	"processQueueFolder":"ProcessQueueFolder",
-
-	"initializationLogQueueName":"InitializationLogQueue",
-	"initializationLogQueueFolder":"InitializationQueueFolder",
-
-	"maxRetryNumberInitApplications": 3,
-	"maxRetryNumberProcess": 2,
-	"maxConsecutiveSystemExceptions": 0,
-
-	"useStorageBucketFiles": false,
-	"localBucketDir": "01-Data\\Temp\\",
-
-	"manualExecutionTime": 30,
-
-	"exScreenshotsFolderPath":"05-ExceptionScreenshots",
-
-	"businessProcessName":"",
-
-	"assets":{
-            "exemploAsset":{
-		"name":"Asset1",
-		"orchestratorFolder":"Pasta1/Subpasta1"
-		},
-            "outroAsset":{
-		"name":"Asset2",
-		"orchestratorFolder":"Pasta2/Subpasta1"
-		}
-        },
-        
-	"credentials":{
-            "testeCredential":{
-		"name":"testCred",
-		"orchestratorFolder":"Pasta1/Subpasta1"
-		}
-        }
-
-
-    }
+﻿{
+   "configurationInfos":{
+      "processQueueName":"ProcessQueueNameDev",
+      "processQueueFolder":"ProcessQueueFolderDev",
+      "maxRetryNumberInitApplications":3,
+      "maxRetryNumberProcess":2,
+      "maxConsecutiveApplicationExceptions":3,
+      "useStorageBucketFiles":false,
+      "localBucketDir":"01-Data\\Temp\\",
+      "exScreenshotsFolderPath":"05-ExceptionScreenshots",
+      "businessProcessName":"",
+      "assets":{
+         "exemploAsset":{
+            "name":"Asset1",
+            "orchestratorFolder":"Pasta1/Subpasta1"
+         },
+         "outroAsset":{
+            "name":"Asset2",
+            "orchestratorFolder":"Pasta2/Subpasta1"
+         }
+      },
+      "credentials":{
+         "testeCredential":{
+            "name":"testCred",
+            "orchestratorFolder":"Pasta1/Subpasta1"
+         }
+      }
+   }
 }
