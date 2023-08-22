@@ -290,7 +290,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.Condition>[fatalError Is Nothing]</Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="-&gt;Get the raw transactional dataset where the itens who need to be processed are within; -&gt;Clean the dataset in order to have only the itens who need to be processed.&#xA;-&gt; Handle data to fit the standards defined for this process " DisplayName="Get Process Data" sap:VirtualizedContainerService.HintSize="534,1050" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="-&gt;Get the raw transactional dataset where the itens who need to be processed are within; -&gt;Clean the dataset in order to have only the itens who need to be processed.&#xA;-&gt; Handle data to fit the standards defined for this process " DisplayName="Get Process Data" sap:VirtualizedContainerService.HintSize="330,164" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
                         <TryCatch DisplayName="T/C get process data" sap:VirtualizedContainerService.HintSize="488,605" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <TryCatch.Try>
@@ -359,7 +359,7 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.Condition>[fatalError Is Nothing AndAlso businessException Is Nothing]</Transition.Condition>
                           <Transition.To>
-                            <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="-&gt; Process the current transaction item." DisplayName="Process" sap:VirtualizedContainerService.HintSize="305,104" sap2010:WorkflowViewState.IdRef="State_5">
+                            <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="-&gt; Process the current transaction item." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="305,104" sap2010:WorkflowViewState.IdRef="State_5">
                               <State.Entry>
                                 <TryCatch DisplayName="T/C Process" sap:VirtualizedContainerService.HintSize="488,940" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                                   <TryCatch.Try>
