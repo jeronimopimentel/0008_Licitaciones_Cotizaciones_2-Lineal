@@ -2,13 +2,20 @@
    "configurationInfos":{
       "processQueueName":"ProcessQueueNameDev",
       "processQueueFolder":"ProcessQueueFolderDev",
+
       "maxRetryNumberInitApplications":3,
       "maxRetryNumberProcess":2,
       "maxConsecutiveApplicationExceptions":3,
+
       "useStorageBucketFiles":false,
       "localBucketDir":"01-Data\\Temp\\",
+
       "exScreenshotsFolderPath":"05-ExceptionScreenshots",
+
+      "mailBodyReport":"01-Data\\Input\\mailBodyReport.txt",
+
       "businessProcessName":"",
+
       "assets":{
          "exemploAsset":{
             "name":"Asset1",
