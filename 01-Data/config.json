@@ -10,7 +10,7 @@
       "useStorageBucketFiles":false,
       "localBucketDir":"01-Data\\Temp\\",
 
-      "exScreenshotsFolderPath":"05-ExceptionScreenshots",
+      "exScreenshotsFolderPath":"01-Data\\Temp\\",
 
       "mailBodyReport":"01-Data\\Input\\mailBodyReport.txt",
       "mailBodyStartNotification":"01-Data\\Input\\mailBodyStartNotification.txt",

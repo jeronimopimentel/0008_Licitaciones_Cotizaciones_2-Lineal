@@ -1,0 +1,1 @@
+Os Workflows específicos de cada projeto devem ser adicionados nessa pasta.
