@@ -13,6 +13,7 @@
       "exScreenshotsFolderPath":"05-ExceptionScreenshots",
 
       "mailBodyReport":"01-Data\\Input\\mailBodyReport.txt",
+      "mailBodyStartNotification":"01-Data\\Input\\mailBodyStartNotification.txt",
 
       "businessProcessName":"",
 
