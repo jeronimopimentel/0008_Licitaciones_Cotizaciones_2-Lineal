@@ -128,11 +128,11 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <State x:Name="__ReferenceID5" sap2010:Annotation.AnnotationText="-&gt; Kill processes involved in the automation to clear environment.&#xA;-&gt; Start Streaming Server.&#xA;-&gt; Delete temporary files.&#xA;-&gt; Download config file from Storage Bucket; -&gt; Create dictionary from JSON config file;&#xA;-&gt; Initialize variables used in the automation." DisplayName="Initialize Environment" sap:VirtualizedContainerService.HintSize="534,1919" sap2010:WorkflowViewState.IdRef="State_1">
+    <State x:Name="__ReferenceID5" sap2010:Annotation.AnnotationText="-&gt; Kill processes involved in the automation to clear environment.&#xA;-&gt; Start Streaming Server.&#xA;-&gt; Delete temporary files.&#xA;-&gt; Download config file from Storage Bucket; -&gt; Create dictionary from JSON config file;&#xA;-&gt; Initialize variables used in the automation." DisplayName="Initialize Environment" sap:VirtualizedContainerService.HintSize="534,2121" sap2010:WorkflowViewState.IdRef="State_1">
       <State.Entry>
-        <TryCatch DisplayName="Try init all settings" sap:VirtualizedContainerService.HintSize="488,1429" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch DisplayName="Try init all settings" sap:VirtualizedContainerService.HintSize="488,1631" sap2010:WorkflowViewState.IdRef="TryCatch_1">
           <TryCatch.Try>
-            <Sequence DisplayName="Init all settings" sap:VirtualizedContainerService.HintSize="450,1201" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Init all settings" sap:VirtualizedContainerService.HintSize="450,1403" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -206,6 +206,16 @@
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <ui:LogMessage DisplayName="Log Message screen resolution" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[String.Format(&quot;The primary screen resolution is: {0}x{1}&quot;, Screen.PrimaryScreen.Bounds.Width.ToString, Screen.PrimaryScreen.Bounds.Height.ToString)]" />
+              <ui:AddLogFields sap2010:Annotation.AnnotationText="Add the process name to the logs generated after this point. &#xA;This log field can be used to create reports and visualizations about the process." DisplayName="Add Log Fields (BusinessProcessName)" sap:VirtualizedContainerService.HintSize="388,162" sap2010:WorkflowViewState.IdRef="AddLogFields_1">
+                <ui:AddLogFields.Fields>
+                  <InArgument x:TypeArguments="x:String" x:Key="logF_BusinessProcessName">[Config("businessProcessName").ToString]</InArgument>
+                </ui:AddLogFields.Fields>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:AddLogFields>
             </Sequence>
           </TryCatch.Try>
           <TryCatch.Catches>
