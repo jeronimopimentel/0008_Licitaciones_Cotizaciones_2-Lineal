@@ -1,1 +1,1 @@
-Os Workflows específicos de cada projeto devem ser adicionados nessa pasta.
+The specific Workflows for each project must be added to this folder.

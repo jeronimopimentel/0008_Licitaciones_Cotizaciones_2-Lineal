@@ -94,7 +94,7 @@
         "fileName": ".templates\\StopStreamingServer.xaml"
       }
     ],
-    "modernBehavior": false
+    "modernBehavior": true
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [

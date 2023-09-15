@@ -1,1 +1,1 @@
-Os Workflows de teste desse projeto devem ser adicionados nessa pasta.
+The Test Workflows for this project must be added to this folder.

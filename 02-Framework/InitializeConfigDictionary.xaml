@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1164,1339</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1787,1461</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>InitAllSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -82,9 +82,10 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="InitializeConfigDictionary" sap:VirtualizedContainerService.HintSize="496,1274" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="InitializeConfigDictionary" sap:VirtualizedContainerService.HintSize="496,1396" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="projectName" />
       <Variable x:TypeArguments="x:String" Name="textJsonConfig" />
@@ -117,15 +118,9 @@
     </If>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Workflow responsible for converting all the json config file into a dictionary. Including retrieving assets and credentials from orchestrator." DisplayName="Invoke JsonToDictionary workflow" sap:VirtualizedContainerService.HintSize="434,170" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="02-Framework\JsonToDictionary.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictionary">
-          <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="out_config" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_stringJson">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="textJsonConfig" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_maxRetryNumberOrchestratorInteractions">
-          <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="maxRetryNumberOrchestratorInteractions" />
-        </InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictionary">[out_config]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_stringJson">[textJsonConfig]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_maxRetryNumberOrchestratorInteractions">[maxRetryNumberOrchestratorInteractions]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -147,6 +142,14 @@
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:Object">[maxRetryNumberOrchestratorInteractions]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Insert tempFolderPath into config dict" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Object">[out_config("tempFolderPath")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Path.Combine(Path.GetTempPath,projectName)]</InArgument>
       </Assign.Value>
     </Assign>
   </Sequence>
