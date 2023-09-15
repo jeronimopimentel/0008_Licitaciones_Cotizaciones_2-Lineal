@@ -68,6 +68,30 @@
       {
         "templateType": "Generic",
         "fileName": ".templates\\CalculateWorkingDay.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\CloseOrKillAppGeneric.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\InitializeAppGeneric.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\SendMailSmtpAlertBasedOnTxt.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\SendReportMailSmtpBasedOnTxt.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\StartStreamingServer.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\StopStreamingServer.xaml"
       }
     ],
     "modernBehavior": false
