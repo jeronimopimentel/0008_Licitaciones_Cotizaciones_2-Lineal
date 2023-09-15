@@ -284,7 +284,7 @@
                   <Transition.To>
                     <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="-&gt; Get the raw transactional dataset where the itens who need to be processed are within; -&gt; Clean the dataset in order to have only the itens who need to be processed.&#xA;-&gt; Handle data to fit the standards defined for this process " DisplayName="Get Process Data" sap:VirtualizedContainerService.HintSize="330,164" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="T/C get process data" sap:VirtualizedContainerService.HintSize="474,314" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="T/C get process data" sap:VirtualizedContainerService.HintSize="488,1170" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <TryCatch.Try>
                             <Sequence DisplayName="Get process data" sap:VirtualizedContainerService.HintSize="450,942" sap2010:WorkflowViewState.IdRef="Sequence_13">
                               <Sequence.Variables>
@@ -358,10 +358,10 @@
                             </Sequence>
                           </TryCatch.Try>
                           <TryCatch.Catches>
-                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="440,151" sap2010:WorkflowViewState.IdRef="Catch`1_13">
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_13">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
@@ -369,7 +369,7 @@
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                 </ActivityAction.Argument>
-                                <Assign DisplayName="Fill fatalError" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                <Assign DisplayName="Fill fatalError" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_19">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="s:Exception">[fatalError]</OutArgument>
                                   </Assign.To>
@@ -479,7 +479,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <State.Transitions>
-                                <Transition DisplayName="fatalError (Process)" sap2010:WorkflowViewState.IdRef="Transition_34">
+                                <Transition DisplayName="fatalError (Process)" sap:VirtualizedContainerService.HintSize="476,1122" sap2010:WorkflowViewState.IdRef="Transition_34">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -488,11 +488,8 @@
                                       <x:Int32 x:Key="DestConnectionPointIndex">18</x:Int32>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Transition.Condition>
-                                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="fatalError IsNot Nothing" />
-                                  </Transition.Condition>
                                   <Transition.To>
-                                    <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="-&gt; Set transaction progress gor the processed item" DisplayName="Set Transaction Progress" sap:VirtualizedContainerService.HintSize="484,733" sap2010:WorkflowViewState.IdRef="State_8">
+                                    <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="-&gt; Set transaction progress gor the processed item" DisplayName="Set Transaction Progress" sap:VirtualizedContainerService.HintSize="309,115" sap2010:WorkflowViewState.IdRef="State_8">
                                       <State.Entry>
                                         <TryCatch DisplayName="T/C Set Transaction Status" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_10">
                                           <TryCatch.Try>
@@ -585,7 +582,7 @@
                                                         <ActivityAction.Argument>
                                                           <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                                         </ActivityAction.Argument>
-                                                        <Assign DisplayName="Assign reportError (Send Report)" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                                        <Assign DisplayName="Assign reportError (Send Report)" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_22">
                                                           <Assign.To>
                                                             <OutArgument x:TypeArguments="s:Exception">[errorTryingToReport]</OutArgument>
                                                           </Assign.To>
@@ -668,6 +665,12 @@
                                       </State.Transitions>
                                     </State>
                                   </Transition.To>
+                                  <Transition.Action>
+                                    <ui:LogMessage DisplayName="Log Message (process transaction item)" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[&quot;Fatal exception during process transaction item: &quot;+fatalError.Message+&quot; at Source: &quot;+fatalError.Source]" />
+                                  </Transition.Action>
+                                  <Transition.Condition>
+                                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="fatalError IsNot Nothing" />
+                                  </Transition.Condition>
                                 </Transition>
                                 <Transition DisplayName="Success" sap:VirtualizedContainerService.HintSize="476,1091" sap2010:WorkflowViewState.IdRef="Transition_25">
                                   <sap:WorkflowViewStateService.ViewState>
@@ -675,6 +678,7 @@
                                       <av:PointCollection x:Key="ConnectorLocation">600.5,992.5 600.5,1022.5 602,1022.5 602,1128</av:PointCollection>
                                       <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
                                       <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <Transition.To>
@@ -684,7 +688,7 @@
                                     <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="fatalError Is Nothing AndAlso businessException Is Nothing" />
                                   </Transition.Condition>
                                 </Transition>
-                                <Transition DisplayName="businessException" sap:VirtualizedContainerService.HintSize="451.3333333333333,854.6666666666666" sap2010:WorkflowViewState.IdRef="Transition_33">
+                                <Transition DisplayName="businessException" sap:VirtualizedContainerService.HintSize="450,827" sap2010:WorkflowViewState.IdRef="Transition_33">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -776,7 +780,6 @@
     <StateMachine.Variables>
       <Variable x:TypeArguments="s:Exception" Name="fatalError" />
       <Variable x:TypeArguments="ui:BusinessRuleException" Name="businessException" />
-      <Variable x:TypeArguments="s:Exception" Name="systemException" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="config" />
       <Variable x:TypeArguments="ui:QueueItem" Name="transactionItem" />
       <Variable x:TypeArguments="s:Exception" Name="errorTryingToReport" />
