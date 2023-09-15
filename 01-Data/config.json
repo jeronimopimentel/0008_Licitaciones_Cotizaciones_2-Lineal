@@ -1,23 +1,15 @@
 ﻿{
-   "configurationInfos":{
-      "processQueueName":"ProcessQueueNameDev",
-      "processQueueFolder":"ProcessQueueFolderDev",
-
-      "maxRetryNumberInitApplications":3,
-      "maxRetryNumberProcess":2,
-      "maxConsecutiveApplicationExceptions":3,
-
-      "useStorageBucketFiles":false,
-      "localBucketDir":"01-Data\\Temp\\",
-
-      "exScreenshotsFolderPath":"01-Data\\Temp\\",
-
-      "mailBodyReport":"01-Data\\Input\\mailBodyReport.txt",
-      "mailBodyStartNotification":"01-Data\\Input\\mailBodyStartNotification.txt",
-
-      "businessProcessName":"",
-
-      "assets":{
+    "configurationInfos":{
+        "processQueueName":"ProcessQueueNameDev",
+        "processQueueFolder":"ProcessQueueFolderDev",
+        "maxRetryNumberInitApplications":3,
+        "maxRetryNumberProcess":2,
+        "maxConsecutiveApplicationExceptions":3,
+        "useStorageBucketFiles":false,
+        "localBucketDir":"",
+        "exScreenshotsFolderPath":"",
+        "businessProcessName":"",
+        "assets":{
             "example1":{
                 "name":"ExampleAsset1",
                 "orchestratorFolder":"Folder1/Subfolder2"
@@ -26,12 +18,12 @@
                 "name":"ExampleAsset2",
                 "orchestratorFolder":"Folder2/Subfolder1"
             }
-      },
-      "credentials":{
+        },
+        "credentials":{
             "example3":{
                 "name":"ExampleCredential1",
                 "orchestratorFolder":"Folder3/Subfolder2"
             }
-      }
-   }
+        }
+    }
 }
