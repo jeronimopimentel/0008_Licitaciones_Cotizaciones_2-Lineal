@@ -10,13 +10,12 @@
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
     </x:Property>
-    <x:Property Name="in_environment" Type="InArgument(x:String)" />
     <x:Property Name="in_maxRetryNumberOrchestratorInteractions" Type="InArgument(x:Int32)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1776,1986.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1164,1546</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="66">
@@ -106,7 +105,7 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Convert Json to Dictionary " sap:VirtualizedContainerService.HintSize="730,1922" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence DisplayName="Convert Json to Dictionary " sap:VirtualizedContainerService.HintSize="730,1481" sap2010:WorkflowViewState.IdRef="Sequence_5">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JToken" Name="jTokenConfig" />
     </Sequence.Variables>
@@ -116,8 +115,8 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message (start)" sap:VirtualizedContainerService.HintSize="668,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Generating dictionary from json file.&quot;]" />
-    <Assign DisplayName="Instantiate a new out dict" sap:VirtualizedContainerService.HintSize="668,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message (start)" sap:VirtualizedContainerService.HintSize="668,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Generating dictionary from json file.&quot;]" />
+    <Assign DisplayName="Instantiate a new out dict" sap:VirtualizedContainerService.HintSize="668,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_Dictionary]</OutArgument>
       </Assign.To>
@@ -125,7 +124,7 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(of String, Object)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Parse config JSON" sap:VirtualizedContainerService.HintSize="668,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_92">
+    <Assign DisplayName="Parse config JSON" sap:VirtualizedContainerService.HintSize="668,82" sap2010:WorkflowViewState.IdRef="Assign_92">
       <Assign.To>
         <OutArgument x:TypeArguments="njl:JToken">[jTokenConfig]</OutArgument>
       </Assign.To>
@@ -133,82 +132,43 @@
         <InArgument x:TypeArguments="njl:JToken">[Newtonsoft.Json.Linq.JToken.Parse(in_stringJson)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[Not String.IsNullOrEmpty(in_environment)]" DisplayName="If environment is informed" sap:VirtualizedContainerService.HintSize="668,508.6666666666667" sap2010:WorkflowViewState.IdRef="If_12">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <If.Then>
-        <TryCatch DisplayName="Try Catch - Get environment JToken" sap:VirtualizedContainerService.HintSize="472.6666666666667,324.6666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_13">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <TryCatch.Try>
-            <Assign DisplayName="Get environment jToken" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_64">
-              <Assign.To>
-                <OutArgument x:TypeArguments="njl:JToken">[jTokenConfig]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="njl:JToken">[jTokenConfig.Item(in_environment)]</InArgument>
-              </Assign.Value>
-            </Assign>
-          </TryCatch.Try>
-          <TryCatch.Catches>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="438.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_13">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ActivityAction x:TypeArguments="s:Exception">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                </ActivityAction.Argument>
-                <Throw DisplayName="Throw SE: Environment not found " Exception="[new Exception(&quot;Environment not found in config.json&quot;)]" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="Throw_18" />
-              </ActivityAction>
-            </Catch>
-          </TryCatch.Catches>
-        </TryCatch>
-      </If.Then>
-      <If.Else>
-        <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_33" />
-      </If.Else>
-    </If>
-    <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each property in config" sap:VirtualizedContainerService.HintSize="668,827.3333333333334" sap2010:WorkflowViewState.IdRef="ForEach`1_11" Values="[jTokenConfig]">
+    <Assign DisplayName="Get environment jToken" sap:VirtualizedContainerService.HintSize="668,82" sap2010:WorkflowViewState.IdRef="Assign_64">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[jTokenConfig]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[jTokenConfig.Item("configurationInfos")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each property in config" sap:VirtualizedContainerService.HintSize="668,823" sap2010:WorkflowViewState.IdRef="ForEach`1_11" Values="[jTokenConfig]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="njl:JProperty">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="njl:JProperty" Name="jPropertyConfig" />
           </ActivityAction.Argument>
-          <Flowchart DisplayName="Flowchart - add JProperties to output dictionary " sap:VirtualizedContainerService.HintSize="634,637.3333333333334" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+          <Flowchart DisplayName="Flowchart - add JProperties to output dictionary " sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 <av:Point x:Key="ShapeLocation">250,2.5</av:Point>
-                <av:Size x:Key="ShapeSize">60,74.66666666666667</av:Size>
+                <av:Size x:Key="ShapeSize">60,75</av:Size>
                 <av:PointCollection x:Key="ConnectorLocation">280,77.5 280,136.5</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <Flowchart.StartNode>
               <x:Reference>__ReferenceID3</x:Reference>
             </Flowchart.StartNode>
-            <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID3" DisplayName="JProperty Name" Expression="[jPropertyConfig.Name]" sap:VirtualizedContainerService.HintSize="90,86.66666666666667" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
+            <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID3" DisplayName="JProperty Name" Expression="[jPropertyConfig.Name]" sap:VirtualizedContainerService.HintSize="90,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
               <FlowSwitch.Default>
                 <FlowStep x:Name="__ReferenceID1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">180,346</av:Point>
-                      <av:Size x:Key="ShapeSize">200,84.66666666666667</av:Size>
+                      <av:Size x:Key="ShapeSize">200,81</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Add Item to Dictionary" sap:VirtualizedContainerService.HintSize="200,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                  <Sequence DisplayName="Add Item to Dictionary" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_22">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -343,7 +303,7 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">235,136.5</av:Point>
-                  <av:Size x:Key="ShapeSize">90,86.66666666666667</av:Size>
+                  <av:Size x:Key="ShapeSize">90,87</av:Size>
                   <av:PointCollection x:Key="credentialsConnector">235,180 110,180 110,234</av:PointCollection>
                   <av:PointCollection x:Key="Default">280,223.5 280,346</av:PointCollection>
                   <av:PointCollection x:Key="assetsConnector">325,180 470,180 470,234</av:PointCollection>
@@ -353,18 +313,18 @@
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">10,234</av:Point>
-                    <av:Size x:Key="ShapeSize">200,54</av:Size>
+                    <av:Size x:Key="ShapeSize">200,52</av:Size>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - Object in credential key" sap:VirtualizedContainerService.HintSize="602.6666666666666,1548.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[jPropertyConfig.Values]">
+                <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - Object in credential key" sap:VirtualizedContainerService.HintSize="602,1643" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[jPropertyConfig.Values]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="njl:JProperty">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="njl:JProperty" Name="credential" />
                       </ActivityAction.Argument>
-                      <If Condition="[Not out_dictionary.Keys.Contains(&quot;credentials_&quot; + credential.Name + &quot;_credentialName&quot;)]" DisplayName="If - Verify if the dictionary doesn't contains this key (credentials)" sap:VirtualizedContainerService.HintSize="568.6666666666666,1358.6666666666667" sap2010:WorkflowViewState.IdRef="If_11">
+                      <If Condition="[Not out_dictionary.Keys.Contains(&quot;credentials_&quot; + credential.Name + &quot;_credentialName&quot;)]" DisplayName="If - Verify if the dictionary doesn't contains this key (credentials)" sap:VirtualizedContainerService.HintSize="568,1457" sap2010:WorkflowViewState.IdRef="If_11">
                         <If.Then>
-                          <TryCatch DisplayName="Try Catch - Retrieve Credential in Orchestrator" sap:VirtualizedContainerService.HintSize="534.6666666666666,1174.6666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_12">
+                          <TryCatch DisplayName="Try Catch - Retrieve Credential in Orchestrator" sap:VirtualizedContainerService.HintSize="534,1225" sap2010:WorkflowViewState.IdRef="TryCatch_12">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -372,7 +332,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <TryCatch.Try>
-                              <Sequence DisplayName="Retrieve Credential in Orchestrator" sap:VirtualizedContainerService.HintSize="496,935.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                              <Sequence DisplayName="Retrieve Credential in Orchestrator" sap:VirtualizedContainerService.HintSize="496,997" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="x:String" Name="username" />
                                   <Variable x:TypeArguments="ss:SecureString" Name="password" />
@@ -383,7 +343,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Create credential jObject" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_66">
+                                <Assign DisplayName="Create credential jObject" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_66">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="njl:JObject">[jObjCredential]</OutArgument>
                                   </Assign.To>
@@ -391,10 +351,10 @@
                                     <InArgument x:TypeArguments="njl:JObject">[DirectCast(credential.Value, JObject)]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <ui:RetryScope DisplayName="Retry Scope - get Credential" sap:VirtualizedContainerService.HintSize="434,323.3333333333333" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_maxRetryNumberOrchestratorInteractions]" RetryInterval="00:00:20">
+                                <ui:RetryScope DisplayName="Retry Scope - get Credential" sap:VirtualizedContainerService.HintSize="434,398" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_maxRetryNumberOrchestratorInteractions]" RetryInterval="00:00:20">
                                   <ui:RetryScope.ActivityBody>
                                     <ActivityAction>
-                                      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[jObjCredential(&quot;name&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential - user and password" FolderPath="[jObjCredential(&quot;orchestratorFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_6" Password="[password]" Username="[username]" />
+                                      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[jObjCredential(&quot;name&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential - user and password" FolderPath="[jObjCredential(&quot;orchestratorFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_6" Password="[password]" Username="[username]" />
                                     </ActivityAction>
                                   </ui:RetryScope.ActivityBody>
                                   <ui:RetryScope.Condition>
@@ -407,15 +367,15 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:RetryScope>
-                                <Assign DisplayName="Set credential name to dictionary" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_58">
+                                <Assign DisplayName="Set credential name to dictionary" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_58">
                                   <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Object">[out_dictionary(credential.Name)]</OutArgument>
+                                    <OutArgument x:TypeArguments="x:Object">[out_dictionary(credential.Name + "Credential")]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[jObjCredential("name").ToString]</InArgument>
+                                    <InArgument x:TypeArguments="s:String[]">[{jObjCredential("name").ToString, jObjCredential("orchestratorFolder").ToString}]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <Assign DisplayName="Set credential username to dictionary" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_59">
+                                <Assign DisplayName="Set credential username to dictionary" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_59">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:Object">[out_dictionary(credential.Name+"Username")]</OutArgument>
                                   </Assign.To>
@@ -423,7 +383,7 @@
                                     <InArgument x:TypeArguments="x:Object">[username]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <Assign DisplayName="Set credential password to dictionary" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_60">
+                                <Assign DisplayName="Set credential password to dictionary" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_60">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:Object">[out_dictionary(credential.Name+"Password")]</OutArgument>
                                   </Assign.To>
@@ -434,7 +394,7 @@
                               </Sequence>
                             </TryCatch.Try>
                             <TryCatch.Catches>
-                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="500.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_12">
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="500,21" sap2010:WorkflowViewState.IdRef="Catch`1_12">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -445,7 +405,7 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                   </ActivityAction.Argument>
-                                  <Throw DisplayName="Throw BRE: Credential not found" Exception="[new BusinessRuleException(String.Format(&quot;Could not load credential {0} during dictionary initialization.&quot;,{credential.Name}))]" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="Throw_16" />
+                                  <Throw DisplayName="Throw BRE: Credential not found" Exception="[new BusinessRuleException(String.Format(&quot;Could not load credential {0} during dictionary initialization.&quot;,{credential.Name}))]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_16" />
                                 </ActivityAction>
                               </Catch>
                             </TryCatch.Catches>
@@ -463,10 +423,10 @@
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">370,234</av:Point>
-                    <av:Size x:Key="ShapeSize">200,54</av:Size>
+                    <av:Size x:Key="ShapeSize">200,52</av:Size>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - Asset value in asset key" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[jPropertyConfig.Values]">
+                <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - Asset value in asset key" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[jPropertyConfig.Values]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="njl:JProperty">
                       <ActivityAction.Argument>

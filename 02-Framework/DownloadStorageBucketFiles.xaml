@@ -2,14 +2,15 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Directory where the storage bucket files will be downloaded." Name="in_localBucketDir" Type="InArgument(x:String)" />
     <x:Property Name="in_projectName" Type="InArgument(x:String)" />
+    <x:Property Name="in_maxRetryNumber" Type="InArgument(x:Int32)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1178,1148</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>580,1584</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadStorageBucketFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="27">
+    <scg:List x:TypeArguments="x:String" Capacity="54">
       <x:String>Microsoft.VisualBasic</x:String>
       <x:String>Microsoft.VisualBasic.Activities</x:String>
       <x:String>System</x:String>
@@ -36,6 +37,9 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>UiPath.Core.Activities.Orchestrator</x:String>
       <x:String>UiPath.Core.Activities.Storage</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -68,9 +72,17 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DownloadStorageBucketFiles" sap:VirtualizedContainerService.HintSize="604,1083" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DownloadStorageBucketFiles" sap:VirtualizedContainerService.HintSize="590,1519" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(ucas:StorageFileInfo)" Name="bucketFiles" />
     </Sequence.Variables>
@@ -79,15 +91,15 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message (Downloading Storage Bucket Files)" sap:VirtualizedContainerService.HintSize="562,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Download storage bucket files necessary for the execution of the automation...&quot;]" />
-    <ucas:ListStorageFiles Filter="{x:Null}" TimeoutMS="{x:Null}" Directory="\" DisplayName="List Storage Bucket Files" sap:VirtualizedContainerService.HintSize="562,132" sap2010:WorkflowViewState.IdRef="ListStorageFiles_1" Recursive="True" Result="[BucketFiles]" StorageBucketName="[in_projectName]" />
-    <ui:ForEach x:TypeArguments="ucas:StorageFileInfo" CurrentIndex="{x:Null}" DisplayName="For Each File In Storage Bucket Files" sap:VirtualizedContainerService.HintSize="562,688" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[BucketFiles]">
+    <ui:LogMessage DisplayName="Log Message (Downloading Storage Bucket Files)" sap:VirtualizedContainerService.HintSize="528,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Download storage bucket files necessary for the execution of the automation...&quot;]" />
+    <ucas:ListStorageFiles Filter="{x:Null}" TimeoutMS="{x:Null}" Directory="\" DisplayName="List Storage Bucket Files" sap:VirtualizedContainerService.HintSize="528,133" sap2010:WorkflowViewState.IdRef="ListStorageFiles_1" Recursive="True" Result="[BucketFiles]" StorageBucketName="[in_projectName]" />
+    <ui:ForEach x:TypeArguments="ucas:StorageFileInfo" CurrentIndex="{x:Null}" DisplayName="For Each File In Storage Bucket Files" sap:VirtualizedContainerService.HintSize="528,1054" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[BucketFiles]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="ucas:StorageFileInfo">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ucas:StorageFileInfo" Name="file" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,564" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="494,868" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="fileName" />
             </Sequence.Variables>
@@ -97,7 +109,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign File Name" sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign DisplayName="Assign File Name" sap:VirtualizedContainerService.HintSize="452,82" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[fileName]</OutArgument>
               </Assign.To>
@@ -105,7 +117,7 @@
                 <InArgument x:TypeArguments="x:String">[Path.GetFileName(file.FileFullPath)]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[Not fileName.ToLower.Contains(&quot;config&quot;)]" DisplayName="If File Name Isn't the Config File" sap:VirtualizedContainerService.HintSize="484,372" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[Not fileName.ToLower.Equals(&quot;config.json&quot;)]" DisplayName="If File Name Isn't the Config File" sap:VirtualizedContainerService.HintSize="452,658" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -113,17 +125,10 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <ucas:DownloadStorageFile TimeoutMS="{x:Null}" Destination="[Path.Combine(in_localBucketDir, fileName)]" DisplayName="Download Storage Bucket File" sap:VirtualizedContainerService.HintSize="300,185" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_1" Path="[file.FileFullPath]" StorageBucketName="[in_projectName]">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ucas:DownloadStorageFile>
+                <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_6" />
               </If.Then>
               <If.Else>
-                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence sap:VirtualizedContainerService.HintSize="300,80" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
