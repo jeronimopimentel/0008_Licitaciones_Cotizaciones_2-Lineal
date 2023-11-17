@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="in_tempFolderPath" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1605,1196</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1752,1196</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -79,7 +79,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message - starting folder cleanup" sap:VirtualizedContainerService.HintSize="410,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[String.Format(&quot;Starting folder cleanup {0}&quot;,in_tempFolderPath)]" />
+    <ui:LogMessage DisplayName="Log message - starting folder cleanup" sap:VirtualizedContainerService.HintSize="410,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting folder cleanup {0}&quot;,in_tempFolderPath)]" />
     <ui:PathExists Resource="{x:Null}" DisplayName="Path exists - validate temp folder path" Exists="[tempFolderExists]" sap:VirtualizedContainerService.HintSize="410,115" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_tempFolderPath]" PathType="Folder" />
     <If Condition="[tempFolderExists]" DisplayName="If exist temp folder path" sap:VirtualizedContainerService.HintSize="410,403" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
