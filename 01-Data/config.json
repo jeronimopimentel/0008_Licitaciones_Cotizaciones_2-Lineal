@@ -9,6 +9,15 @@
         "localBucketDir":"",
         "exScreenshotsFolderPath":"",
         "businessProcessName":"",
+		"port": "25",
+		"server": "smtprelay.linde.grp",
+		"to":"jeronimo.pimentel@smarthis.com",
+		"in_mail":"S0ak37@linde.com",
+		"in_password":"Linde1234!",
+		"htmlBodyPath_SuccesProcess":"C://Users//g3ta06//Documents//SmarthisProjects//EnvioLicitacionesContratosChile_002//HTMLTemplate.txt",
+		"htmlBodyPath_EmptyTable":"C://Users//g3ta06//Documents//SmarthisProjects//EnvioLicitacionesContratosChile_002//HTMLTemplate_EmptyDataTable.txt",
+		"htmlBodyPath_ErrorReport": "C://Users//g3ta06//Documents//SmarthisProjects//EnvioLicitacionesContratosChile_002//HTMLTemplate_ErrorMessage.txt",
+
         "assets":{
             "example1":{
                 "name":"ExampleAsset1",

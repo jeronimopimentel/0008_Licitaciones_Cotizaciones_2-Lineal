@@ -220,7 +220,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[mailRow.Item(&quot;Mail Comercial&quot;).ToString]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[mailRow.Item(&quot;Mail Comercial&quot;).ToString]" />
                   <ui:FilterDataTable DataTable="[dt_SeguimientoLicitacionesFiltered]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dt_FilteredForMail]" SelectColumnsMode="Remove">
                     <ui:FilterDataTable.Filters>
                       <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -249,13 +249,13 @@
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendMailMessage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="05-Workflows\SendMailMessage.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Port">
-                        <Literal x:TypeArguments="x:String">25</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;port&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Server">
-                        <Literal x:TypeArguments="x:String">smtprelay.linde.grp</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;server&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_To">
-                        <Literal x:TypeArguments="x:String">jeronimo.pimentel@smarthis.com</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;to&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_CC" />
                       <InArgument x:TypeArguments="x:String" x:Key="in_BCC" />
@@ -263,16 +263,16 @@
                         <Literal x:TypeArguments="x:String" xml:space="preserve">Reporte Licitacion Disponibles </Literal>
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_HtmlBodyPath">
-                        <Literal x:TypeArguments="x:String">C:/Users/g3ta06/Documents/SmarthisProjects/EnvioLicitacionesContratosChile_002/HTMLTemplate.txt</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;htmlBodyPath_SuccesProcess&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="s:String[]" x:Key="in_HtmlBodyParameters">
                         <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;Bot Licitaciones Chile&quot;,Date.Now.ToString(&quot;dd/MM/yyy&quot;), dt_HtmlForMail, mailRow.Item(&quot;Mail Comercial&quot;).ToString}" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Email">
-                        <Literal x:TypeArguments="x:String">S0ak37@linde.com</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;in_mail&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Password">
-                        <Literal x:TypeArguments="x:String">Linde1234!</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;in_password&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_From" />
                       <InArgument x:TypeArguments="x:String" x:Key="in_Name" />
@@ -293,13 +293,13 @@
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SendMailMessage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="05-Workflows\SendMailMessage.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Port">
-                        <Literal x:TypeArguments="x:String">25</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;port&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Server">
-                        <Literal x:TypeArguments="x:String">smtprelay.linde.grp</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;server&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_To">
-                        <Literal x:TypeArguments="x:String">jeronimo.pimentel@smarthis.com</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;to&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_CC" />
                       <InArgument x:TypeArguments="x:String" x:Key="in_BCC" />
@@ -307,16 +307,16 @@
                         <Literal x:TypeArguments="x:String" xml:space="preserve">Reporte Licitacion Disponibles </Literal>
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_HtmlBodyPath">
-                        <Literal x:TypeArguments="x:String">C:/Users/g3ta06/Documents/SmarthisProjects/EnvioLicitacionesContratosChile_002/HTMLTemplate_EmptyDataTable.txt</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;htmlBodyPath_EmptyTable&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="s:String[]" x:Key="in_HtmlBodyParameters">
                         <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;Bot Licitaciones Chile&quot;,Date.Now.ToString(&quot;dd/MM/yyy&quot;)}" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Email">
-                        <Literal x:TypeArguments="x:String">S0ak37@linde.com</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;in_mail&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Password">
-                        <Literal x:TypeArguments="x:String">Linde1234!</Literal>
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;in_password&quot;).ToString" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_From" />
                       <InArgument x:TypeArguments="x:String" x:Key="in_Name" />
