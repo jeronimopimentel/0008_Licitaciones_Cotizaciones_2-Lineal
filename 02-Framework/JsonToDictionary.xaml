@@ -15,7 +15,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1164,1546</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>752,1543</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="66">
@@ -105,7 +105,7 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Convert Json to Dictionary " sap:VirtualizedContainerService.HintSize="730,1481" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence DisplayName="Convert Json to Dictionary " sap:VirtualizedContainerService.HintSize="730,1478" sap2010:WorkflowViewState.IdRef="Sequence_5">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JToken" Name="jTokenConfig" />
     </Sequence.Variables>
@@ -116,7 +116,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message (start)" sap:VirtualizedContainerService.HintSize="668,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Generating dictionary from json file.&quot;]" />
-    <Assign DisplayName="Instantiate a new out dict" sap:VirtualizedContainerService.HintSize="668,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Instantiate a new out dict" sap:VirtualizedContainerService.HintSize="668,81" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_Dictionary]</OutArgument>
       </Assign.To>
@@ -124,7 +124,7 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(of String, Object)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Parse config JSON" sap:VirtualizedContainerService.HintSize="668,82" sap2010:WorkflowViewState.IdRef="Assign_92">
+    <Assign DisplayName="Parse config JSON" sap:VirtualizedContainerService.HintSize="668,81" sap2010:WorkflowViewState.IdRef="Assign_92">
       <Assign.To>
         <OutArgument x:TypeArguments="njl:JToken">[jTokenConfig]</OutArgument>
       </Assign.To>
@@ -132,7 +132,7 @@
         <InArgument x:TypeArguments="njl:JToken">[Newtonsoft.Json.Linq.JToken.Parse(in_stringJson)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Get environment jToken" sap:VirtualizedContainerService.HintSize="668,82" sap2010:WorkflowViewState.IdRef="Assign_64">
+    <Assign DisplayName="Get environment jToken" sap:VirtualizedContainerService.HintSize="668,81" sap2010:WorkflowViewState.IdRef="Assign_64">
       <Assign.To>
         <OutArgument x:TypeArguments="njl:JToken">[jTokenConfig]</OutArgument>
       </Assign.To>
@@ -316,15 +316,15 @@
                     <av:Size x:Key="ShapeSize">200,52</av:Size>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - Object in credential key" sap:VirtualizedContainerService.HintSize="602,1643" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[jPropertyConfig.Values]">
+                <ui:ForEach x:TypeArguments="njl:JProperty" CurrentIndex="{x:Null}" DisplayName="For Each - Object in credential key" sap:VirtualizedContainerService.HintSize="602,1421" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[jPropertyConfig.Values]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="njl:JProperty">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="njl:JProperty" Name="credential" />
                       </ActivityAction.Argument>
-                      <If Condition="[Not out_dictionary.Keys.Contains(&quot;credentials_&quot; + credential.Name + &quot;_credentialName&quot;)]" DisplayName="If - Verify if the dictionary doesn't contains this key (credentials)" sap:VirtualizedContainerService.HintSize="568,1457" sap2010:WorkflowViewState.IdRef="If_11">
+                      <If Condition="[Not out_dictionary.Keys.Contains(&quot;credentials_&quot; + credential.Name + &quot;_credentialName&quot;)]" DisplayName="If - Verify if the dictionary doesn't contains this key (credentials)" sap:VirtualizedContainerService.HintSize="568,1235" sap2010:WorkflowViewState.IdRef="If_11">
                         <If.Then>
-                          <TryCatch DisplayName="Try Catch - Retrieve Credential in Orchestrator" sap:VirtualizedContainerService.HintSize="534,1225" sap2010:WorkflowViewState.IdRef="TryCatch_12">
+                          <TryCatch DisplayName="Try Catch - Retrieve Credential in Orchestrator" sap:VirtualizedContainerService.HintSize="534,1053" sap2010:WorkflowViewState.IdRef="TryCatch_12">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -332,7 +332,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <TryCatch.Try>
-                              <Sequence DisplayName="Retrieve Credential in Orchestrator" sap:VirtualizedContainerService.HintSize="496,997" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                              <Sequence DisplayName="Retrieve Credential in Orchestrator" sap:VirtualizedContainerService.HintSize="496,825" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="x:String" Name="username" />
                                   <Variable x:TypeArguments="ss:SecureString" Name="password" />
@@ -343,7 +343,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Create credential jObject" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_66">
+                                <Assign DisplayName="Create credential jObject" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_66">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="njl:JObject">[jObjCredential]</OutArgument>
                                   </Assign.To>
@@ -351,10 +351,27 @@
                                     <InArgument x:TypeArguments="njl:JObject">[DirectCast(credential.Value, JObject)]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <ui:RetryScope DisplayName="Retry Scope - get Credential" sap:VirtualizedContainerService.HintSize="434,398" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_maxRetryNumberOrchestratorInteractions]" RetryInterval="00:00:20">
+                                <ui:RetryScope DisplayName="Retry Scope - get Credential" sap:VirtualizedContainerService.HintSize="434,227" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_maxRetryNumberOrchestratorInteractions]" RetryInterval="00:00:20">
                                   <ui:RetryScope.ActivityBody>
                                     <ActivityAction>
-                                      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[jObjCredential(&quot;name&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential - user and password" FolderPath="[jObjCredential(&quot;orchestratorFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_6" Password="[password]" Username="[username]" />
+                                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                                        <ui:CommentOut.Body>
+                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,254" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[jObjCredential(&quot;name&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential - user and password" FolderPath="[jObjCredential(&quot;orchestratorFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_6" Password="[password]" Username="[username]" />
+                                          </Sequence>
+                                        </ui:CommentOut.Body>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:CommentOut>
                                     </ActivityAction>
                                   </ui:RetryScope.ActivityBody>
                                   <ui:RetryScope.Condition>
@@ -432,9 +449,9 @@
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="njl:JProperty" Name="asset" />
                       </ActivityAction.Argument>
-                      <If Condition="[Not out_dictionary.Keys.Contains(asset.Name)]" DisplayName="If - Verify if the dictionary doesn't contains this key" sap:VirtualizedContainerService.HintSize="701,988" sap2010:WorkflowViewState.IdRef="If_9">
+                      <If Condition="[Not out_dictionary.Keys.Contains(asset.Name)]" DisplayName="If - Verify if the dictionary doesn't contains this key" sap:VirtualizedContainerService.HintSize="568,990" sap2010:WorkflowViewState.IdRef="If_9">
                         <If.Then>
-                          <TryCatch DisplayName="Try Catch - Retrieve Asset in Orchestrator" sap:VirtualizedContainerService.HintSize="456,830" sap2010:WorkflowViewState.IdRef="TryCatch_11">
+                          <TryCatch DisplayName="Try Catch - Retrieve Asset in Orchestrator" sap:VirtualizedContainerService.HintSize="534,808" sap2010:WorkflowViewState.IdRef="TryCatch_11">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -442,7 +459,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <TryCatch.Try>
-                              <Sequence DisplayName="Retrieve Asset in Orchestrator" sap:VirtualizedContainerService.HintSize="418,603" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                              <Sequence DisplayName="Retrieve Asset in Orchestrator" sap:VirtualizedContainerService.HintSize="496,580" sap2010:WorkflowViewState.IdRef="Sequence_28">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="x:String" Name="assetValue" />
                                   <Variable x:TypeArguments="njl:JObject" Name="jObjAsset" />
@@ -452,7 +469,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Create asset jObject" sap:VirtualizedContainerService.HintSize="376,60" sap2010:WorkflowViewState.IdRef="Assign_67">
+                                <Assign DisplayName="Create asset jObject" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_67">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="njl:JObject">[jObjAsset]</OutArgument>
                                   </Assign.To>
@@ -460,21 +477,38 @@
                                     <InArgument x:TypeArguments="njl:JObject">[DirectCast(asset.Value, JObject)]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <ui:RetryScope DisplayName="Retry Scope - get Asset" sap:VirtualizedContainerService.HintSize="376,311" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="[in_maxRetryNumberOrchestratorInteractions]" RetryInterval="00:00:20">
+                                <ui:RetryScope DisplayName="Retry Scope - get Asset" sap:VirtualizedContainerService.HintSize="434,227" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="[in_maxRetryNumberOrchestratorInteractions]" RetryInterval="00:00:20">
                                   <ui:RetryScope.ActivityBody>
                                     <ActivityAction>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[jObjAsset(&quot;name&quot;).ToString]" CacheStrategy="None" DisplayName="Get Asset Value" FolderPath="[jObjAsset(&quot;orchestratorFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
-                                        <ui:GetRobotAsset.Value>
-                                          <OutArgument x:TypeArguments="x:String">[assetValue]</OutArgument>
-                                        </ui:GetRobotAsset.Value>
-                                      </ui:GetRobotAsset>
+                                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                        <ui:CommentOut.Body>
+                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,254" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[jObjAsset(&quot;name&quot;).ToString]" CacheStrategy="None" DisplayName="Get Asset Value" FolderPath="[jObjAsset(&quot;orchestratorFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
+                                              <ui:GetRobotAsset.Value>
+                                                <OutArgument x:TypeArguments="x:String">[assetValue]</OutArgument>
+                                              </ui:GetRobotAsset.Value>
+                                            </ui:GetRobotAsset>
+                                          </Sequence>
+                                        </ui:CommentOut.Body>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:CommentOut>
                                     </ActivityAction>
                                   </ui:RetryScope.ActivityBody>
                                   <ui:RetryScope.Condition>
                                     <ActivityFunc x:TypeArguments="x:Boolean" />
                                   </ui:RetryScope.Condition>
                                 </ui:RetryScope>
-                                <Assign DisplayName="Assign - Insert assert into dict" sap:VirtualizedContainerService.HintSize="376,60" sap2010:WorkflowViewState.IdRef="Assign_56">
+                                <Assign DisplayName="Assign - Insert assert into dict" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_56">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:Object">[out_dictionary(asset.Name)]</OutArgument>
                                   </Assign.To>

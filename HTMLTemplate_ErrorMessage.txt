@@ -1,0 +1,11 @@
+﻿<html>
+<body>
+
+
+<p>Estimados,</p>
+<p>El proceso <strong>{0}</strong>ha fallado en la fecha {1}.</p>
+
+<p><em><span style="font-size :13px">Este mensaje fue generado automaticamente, por favor no responder.</span></em></p>
+<p>Saludos</p>
+</body>
+</html>
